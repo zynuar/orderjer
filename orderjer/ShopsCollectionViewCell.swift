@@ -9,6 +9,5 @@
 import UIKit
 
 class ShopsCollectionViewCell: UICollectionViewCell {
-    
     @IBOutlet weak var shopsViewImage: UIImageView!
 }

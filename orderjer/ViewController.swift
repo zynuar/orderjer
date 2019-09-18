@@ -20,7 +20,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var shopsView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     var begin = false
-    var images = [UIImage(named: "kfc"), UIImage(named: "mcd"), UIImage(named: "tealive")]
+    let images = ["kfc","mcd","tealive"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,12 +51,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.carouselView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-            cell.carouselImgView.image = images[indexPath.row]
+            cell.carouselImgView.image = UIImage(named: images[indexPath.row])
             return cell
         } else {
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopsCollectionViewCell", for: indexPath) as! ShopsCollectionViewCell
-            cell2.shopsViewImage.image = images[indexPath.row]
+            cell2.shopsViewImage.image = UIImage(named: images[indexPath.row])
             return cell2
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == self.shopsView {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController
+        vc?.mealName = images[indexPath.row]
+        self.navigationController?.pushViewController(vc!, animated: true)
         }
     }
     
