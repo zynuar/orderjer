@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E0EB37823307C6100FCEF10 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0EB37723307C6100FCEF10 /* System.swift */; };
+		4E0EB3862330C97D00FCEF10 /* TextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0EB3852330C97D00FCEF10 /* TextFieldExtensions.swift */; };
+		4E0EB3882330D03700FCEF10 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0EB3872330D03700FCEF10 /* CollectionViewCell.swift */; };
+		4EEF50E32330EAA00036B6EF /* ShopsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEF50E22330EAA00036B6EF /* ShopsCollectionViewCell.swift */; };
 		DDDACFDB232CCE1100AA5E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDACFDA232CCE1100AA5E10 /* AppDelegate.swift */; };
 		DDDACFDD232CCE1100AA5E10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDACFDC232CCE1100AA5E10 /* ViewController.swift */; };
 		DDDACFE0232CCE1100AA5E10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDDACFDE232CCE1100AA5E10 /* Main.storyboard */; };
@@ -34,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E0EB37723307C6100FCEF10 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		4E0EB3852330C97D00FCEF10 /* TextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtensions.swift; sourceTree = "<group>"; };
+		4E0EB3872330D03700FCEF10 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		4EEF50E22330EAA00036B6EF /* ShopsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopsCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDDACFD7232CCE1100AA5E10 /* orderjer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = orderjer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDDACFDA232CCE1100AA5E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDDACFDC232CCE1100AA5E10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +111,10 @@
 				DDDACFE1232CCE1300AA5E10 /* Assets.xcassets */,
 				DDDACFE3232CCE1300AA5E10 /* LaunchScreen.storyboard */,
 				DDDACFE6232CCE1300AA5E10 /* Info.plist */,
+				4E0EB37723307C6100FCEF10 /* System.swift */,
+				4E0EB3852330C97D00FCEF10 /* TextFieldExtensions.swift */,
+				4E0EB3872330D03700FCEF10 /* CollectionViewCell.swift */,
+				4EEF50E22330EAA00036B6EF /* ShopsCollectionViewCell.swift */,
 			);
 			path = orderjer;
 			sourceTree = "<group>";
@@ -257,6 +269,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDDACFDD232CCE1100AA5E10 /* ViewController.swift in Sources */,
+				4E0EB3862330C97D00FCEF10 /* TextFieldExtensions.swift in Sources */,
+				4EEF50E32330EAA00036B6EF /* ShopsCollectionViewCell.swift in Sources */,
+				4E0EB3882330D03700FCEF10 /* CollectionViewCell.swift in Sources */,
+				4E0EB37823307C6100FCEF10 /* System.swift in Sources */,
 				DDDACFDB232CCE1100AA5E10 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
