@@ -20,14 +20,18 @@ class MealTableViewCell: UITableViewCell {
     @IBOutlet weak var addMealButton: UIButton!
     
     var delegate: MealTableViewCellDelegate?
+    var mealItem: Meal!
     
     func setMeals(meal: Meal){
+        mealItem = meal
         mealImageView.image = meal.mealImage
         mealNameLabel.text = meal.mealName
         mealPriceLabel.text = meal.mealPrice
     }
     
     @IBAction func addMealTapped(_ sender: UIButton) {
-        
+       delegate?.addMealTapped(mealName: mealItem.mealName)
     }
+    
+    
 }

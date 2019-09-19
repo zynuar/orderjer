@@ -60,6 +60,12 @@ class MenuViewController: UIViewController {
     }
 }
 
+extension MenuViewController: MealTableViewCellDelegate {
+    func addMealTapped(mealName: String) {
+    
+    }
+}
+
 extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,12 +76,17 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
         return 110
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "MealView", sender: self)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let meal = meals[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "MealTableViewCell") as! MealTableViewCell
         cell.layer.cornerRadius = 16.0
         cell.setMeals(meal: meal)
-        
+        cell.delegate = self
         return cell
     }
     
