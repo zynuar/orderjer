@@ -12,10 +12,15 @@ class MealViewController: UIViewController {
 
     @IBOutlet weak var imageBackground: UIImageView!
     @IBOutlet weak var singleMealImageView: UIImageView!
+    @IBOutlet weak var selectedMealNameLabel: UILabel!
     @IBOutlet weak var placeOrderButton: UIButton!
+  
+    var selectedMeal: Meal?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectedMealNameLabel.text = "\((selectedMeal?.mealName)!)"
+        singleMealImageView.image = selectedMeal?.mealImage
         imageBackground.roundCorners(.topLeft, radius: 50)
         placeOrderButton.layer.cornerRadius = 16
         placeOrderButton.layer.borderWidth = 3

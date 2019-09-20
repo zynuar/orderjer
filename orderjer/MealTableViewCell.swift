@@ -8,18 +8,12 @@
 
 import UIKit
 
-protocol MealTableViewCellDelegate {
-    func addMealTapped(mealName: String)
-}
-
 class MealTableViewCell: UITableViewCell {
     
     @IBOutlet weak var mealImageView: UIImageView!
     @IBOutlet weak var mealPriceLabel: UILabel!
     @IBOutlet weak var mealNameLabel: UILabel!
-    @IBOutlet weak var addMealButton: UIButton!
     
-    var delegate: MealTableViewCellDelegate?
     var mealItem: Meal!
     
     func setMeals(meal: Meal){
@@ -28,10 +22,4 @@ class MealTableViewCell: UITableViewCell {
         mealNameLabel.text = meal.mealName
         mealPriceLabel.text = meal.mealPrice
     }
-    
-    @IBAction func addMealTapped(_ sender: UIButton) {
-       delegate?.addMealTapped(mealName: mealItem.mealName)
-    }
-    
-    
 }

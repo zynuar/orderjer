@@ -14,8 +14,8 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var shopsNameLabel: UILabel!
     @IBOutlet weak var imageBackground: UIImageView!
     @IBOutlet weak var menuImage: UIImageView!
-
-    var mealName = ""
+    
+    var shopsName = ""
     // initialize empty array
     var meals: [Meal] = []
     
@@ -23,46 +23,36 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
         meals = createArray()
         imageBackground.roundCorners(.topLeft, radius: 50)
-        shopsNameLabel.text = mealName
-        if mealName == "kfc" {
+        shopsNameLabel.text = shopsName
+        if shopsName == "kfc" {
             menuImage.image = UIImage(named: "cover menu kfc")
-        } else if mealName == "mcd" {
+        } else if shopsName == "mcd" {
             menuImage.image = UIImage(named: "cover menu mcd")
-        } else if mealName == "tealive" {
+        } else if shopsName == "tealive" {
             menuImage.image = UIImage(named: "cover menu tealive")
         }
     }
     
     func createArray() -> [Meal] {
         var tempMeals: [Meal] = []
-        if mealName == "kfc" {
-            
+        if shopsName == "kfc" {
             let meal1 = Meal(mealImage: UIImage(named: "snack-plate")!, mealName: "Snack Plate", mealPrice: "RM 10.00")
             let meal2 = Meal(mealImage: UIImage(named: "dinner-plate")!, mealName: "Dinner Plate", mealPrice: "RM 15.00")
             let meal3 = Meal(mealImage: UIImage(named: "family-feast")!, mealName: "Family Feast", mealPrice: "RM 53.00")
-            
             tempMeals.append(meal1)
             tempMeals.append(meal2)
             tempMeals.append(meal3)
-            
-        } else if mealName == "mcd" {
+        } else if shopsName == "mcd" {
             let meal1 = Meal(mealImage: UIImage(named: "big-mac")!, mealName: "Big Mac", mealPrice: "RM 10.00")
             let meal2 = Meal(mealImage: UIImage(named: "ayam-goreng-mcd")!, mealName: "Ayam Goreng Mcd", mealPrice: "RM 15.00")
             let meal3 = Meal(mealImage: UIImage(named: "double-cheese-burger")!, mealName: "Double Cheese Burger", mealPrice: "RM 12.00")
-            
             tempMeals.append(meal1)
             tempMeals.append(meal2)
             tempMeals.append(meal3)
-        } else if mealName == "tealive" {
+        } else if shopsName == "tealive" {
             menuImage.image = UIImage(named: "cover menu tealive")
         }
         return tempMeals
-    }
-}
-
-extension MenuViewController: MealTableViewCellDelegate {
-    func addMealTapped(mealName: String) {
-    
     }
 }
 
@@ -77,17 +67,26 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "MealView", sender: self)
+        //tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "MealView", sender: nil)
     }
     
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let meal = meals[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "MealTableViewCell") as! MealTableViewCell
         cell.layer.cornerRadius = 16.0
         cell.setMeals(meal: meal)
-        cell.delegate = self
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // send data to MealViewController
+        if let destination = segue.destination as? MealViewController {
+            destination.selectedMeal = meals[(mealList.indexPathForSelectedRow?.row)!]
+        }
+    }
+    
+    
     
 }
