@@ -18,7 +18,5 @@ class Meal {
         self.mealImage = mealImage
         self.mealName = mealName
         self.mealPrice = mealPrice
-        
-
     }
 }

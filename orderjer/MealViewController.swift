@@ -14,7 +14,7 @@ class MealViewController: UIViewController {
     @IBOutlet weak var singleMealImageView: UIImageView!
     @IBOutlet weak var selectedMealNameLabel: UILabel!
     @IBOutlet weak var placeOrderButton: UIButton!
-  
+    
     var selectedMeal: Meal?
     
     override func viewDidLoad() {
