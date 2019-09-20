@@ -36,21 +36,44 @@ class MenuViewController: UIViewController {
     func createArray() -> [Meal] {
         var tempMeals: [Meal] = []
         if shopsName == "kfc" {
+            
             let meal1 = Meal(mealImage: UIImage(named: "snack-plate")!, mealName: "Snack Plate", mealPrice: "RM 10.00")
             let meal2 = Meal(mealImage: UIImage(named: "dinner-plate")!, mealName: "Dinner Plate", mealPrice: "RM 15.00")
-            let meal3 = Meal(mealImage: UIImage(named: "family-feast")!, mealName: "Family Feast", mealPrice: "RM 53.00")
+            let meal3 = Meal(mealImage: UIImage(named: "zinger-burger")!, mealName: "Zinger Burger", mealPrice: "RM 18.00")
+            let meal4 = Meal(mealImage: UIImage(named: "wrap-cheezy")!, mealName: "Cheezy Wrap", mealPrice: "RM 12.00")
+            let meal5 = Meal(mealImage: UIImage(named: "family-feast")!, mealName: "Family Feast", mealPrice: "RM 53.00")
             tempMeals.append(meal1)
             tempMeals.append(meal2)
             tempMeals.append(meal3)
+            tempMeals.append(meal4)
+            tempMeals.append(meal5)
+            
         } else if shopsName == "mcd" {
+            
             let meal1 = Meal(mealImage: UIImage(named: "big-mac")!, mealName: "Big Mac", mealPrice: "RM 10.00")
             let meal2 = Meal(mealImage: UIImage(named: "ayam-goreng-mcd")!, mealName: "Ayam Goreng Mcd", mealPrice: "RM 15.00")
             let meal3 = Meal(mealImage: UIImage(named: "double-cheese-burger")!, mealName: "Double Cheese Burger", mealPrice: "RM 12.00")
+            let meal4 = Meal(mealImage: UIImage(named: "double-quarter-pounder")!, mealName: "Double Quarter Pounder", mealPrice: "RM 19.00")
+            let meal5 = Meal(mealImage: UIImage(named: "grilled-chicken-burger")!, mealName: "Grilled Chicken Burger", mealPrice: "RM 12.00")
             tempMeals.append(meal1)
             tempMeals.append(meal2)
             tempMeals.append(meal3)
+            tempMeals.append(meal4)
+            tempMeals.append(meal5)
+            
         } else if shopsName == "tealive" {
-            menuImage.image = UIImage(named: "cover menu tealive")
+            
+            let meal1 = Meal(mealImage: UIImage(named: "Passion Fruit Tea")!, mealName: "Passion Fruit Tea", mealPrice: "RM 10.00")
+            let meal2 = Meal(mealImage: UIImage(named: "Radiant Roselle Tea")!, mealName: "Radiant Roselle Tea", mealPrice: "RM 15.00")
+            let meal3 = Meal(mealImage: UIImage(named: "Signature Brown Sugar Pearl Milk Tea")!, mealName: "Signature Brown Sugar Pearl Milk Tea", mealPrice: "RM 12.00")
+            let meal4 = Meal(mealImage: UIImage(named: "Strawberry Pudding Smoothies")!, mealName: "Strawberry Pudding Smoothies", mealPrice: "RM 19.00")
+            let meal5 = Meal(mealImage: UIImage(named: "Superior Coco with Sea Salt Cheese")!, mealName: "Superior Coco with Sea Salt Cheese", mealPrice: "RM 12.00")
+            tempMeals.append(meal1)
+            tempMeals.append(meal2)
+            tempMeals.append(meal3)
+            tempMeals.append(meal4)
+            tempMeals.append(meal5)
+            
         }
         return tempMeals
     }
