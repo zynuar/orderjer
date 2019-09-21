@@ -20,6 +20,8 @@
 		4EEF50E32330EAA00036B6EF /* ShopsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEF50E22330EAA00036B6EF /* ShopsCollectionViewCell.swift */; };
 		4EF2CD502334C0E100CFCC56 /* LoginModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF2CD4F2334C0E100CFCC56 /* LoginModalView.swift */; };
 		4EF2CD522334C26000CFCC56 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF2CD512334C26000CFCC56 /* LoginViewController.swift */; };
+		DD9744322335DCB5004E491F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9744312335DCB5004E491F /* RegisterViewController.swift */; };
+		DD9744342335E128004E491F /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9744332335E128004E491F /* SuccessViewController.swift */; };
 		DDDACFDB232CCE1100AA5E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDACFDA232CCE1100AA5E10 /* AppDelegate.swift */; };
 		DDDACFDD232CCE1100AA5E10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDACFDC232CCE1100AA5E10 /* ViewController.swift */; };
 		DDDACFE0232CCE1100AA5E10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDDACFDE232CCE1100AA5E10 /* Main.storyboard */; };
@@ -60,6 +62,8 @@
 		4EEF50E22330EAA00036B6EF /* ShopsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopsCollectionViewCell.swift; sourceTree = "<group>"; };
 		4EF2CD4F2334C0E100CFCC56 /* LoginModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModalView.swift; sourceTree = "<group>"; };
 		4EF2CD512334C26000CFCC56 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DD9744312335DCB5004E491F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		DD9744332335E128004E491F /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
 		DDDACFD7232CCE1100AA5E10 /* orderjer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = orderjer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDDACFDA232CCE1100AA5E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDDACFDC232CCE1100AA5E10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -130,15 +134,17 @@
 				DDDACFE6232CCE1300AA5E10 /* Info.plist */,
 				DDDACFE3232CCE1300AA5E10 /* LaunchScreen.storyboard */,
 				4EF2CD4F2334C0E100CFCC56 /* LoginModalView.swift */,
-				DDDACFDE232CCE1100AA5E10 /* Main.storyboard */,
 				4EF2CD512334C26000CFCC56 /* LoginViewController.swift */,
+				DDDACFDE232CCE1100AA5E10 /* Main.storyboard */,
 				4EB7219D23331B350002AB65 /* Meal.swift */,
 				4E6A9476233489DA00017E3C /* MealOptionsTableViewCell.swift */,
 				4EB7219B233317990002AB65 /* MealTableViewCell.swift */,
 				4ED717AA233362F400387731 /* MealViewController.swift */,
 				4EE18CBC2331CF6300B8F211 /* MenuViewController.swift */,
 				4E93E0612334AB3200C7A818 /* OrderSummaryViewController.swift */,
+				DD9744312335DCB5004E491F /* RegisterViewController.swift */,
 				4EEF50E22330EAA00036B6EF /* ShopsCollectionViewCell.swift */,
+				DD9744332335E128004E491F /* SuccessViewController.swift */,
 				4E0EB37723307C6100FCEF10 /* System.swift */,
 				4E0EB3852330C97D00FCEF10 /* TextFieldExtensions.swift */,
 				DDDACFDC232CCE1100AA5E10 /* ViewController.swift */,
@@ -304,8 +310,10 @@
 				4EEF50E32330EAA00036B6EF /* ShopsCollectionViewCell.swift in Sources */,
 				4EE18CBD2331CF6300B8F211 /* MenuViewController.swift in Sources */,
 				4EB7219C233317990002AB65 /* MealTableViewCell.swift in Sources */,
+				DD9744342335E128004E491F /* SuccessViewController.swift in Sources */,
 				4E0EB3882330D03700FCEF10 /* CollectionViewCell.swift in Sources */,
 				4E0EB37823307C6100FCEF10 /* System.swift in Sources */,
+				DD9744322335DCB5004E491F /* RegisterViewController.swift in Sources */,
 				4EF2CD502334C0E100CFCC56 /* LoginModalView.swift in Sources */,
 				4ED717AB233362F400387731 /* MealViewController.swift in Sources */,
 				DDDACFDB232CCE1100AA5E10 /* AppDelegate.swift in Sources */,

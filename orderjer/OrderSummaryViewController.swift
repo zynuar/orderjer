@@ -12,22 +12,20 @@ class OrderSummaryViewController: UIViewController {
 
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var dismissButton: UIButton!
+    @IBOutlet weak var proceedButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cardView.layer.cornerRadius = 20.0
+        cardView.layer.shadowColor = UIColor.gray.cgColor
+        cardView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        cardView.layer.shadowRadius = 12.0
+        cardView.layer.shadowOpacity = 0.7
+        proceedButton.layer.cornerRadius = 8
     }
     
     @IBAction func dismissTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     
-}
-
-extension UIView {
-    func setCardView(view: UIView) {
-        view.layer.shadowColor = UIColor.lightGray.cgColor
-        view.layer.shadowOpacity = 0.5
-        view.layer.shadowOffset = CGSize(width: 5, height: 5)
-        view.layer.masksToBounds = true
-    }
 }

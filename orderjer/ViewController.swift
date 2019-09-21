@@ -62,9 +62,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.shopsView {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController
-        vc?.shopsName = images[indexPath.row]
-        self.navigationController?.pushViewController(vc!, animated: true)
+            let vc = storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController
+            vc?.shopsName = images[indexPath.row]
+            self.navigationController?.pushViewController(vc!, animated: true)
         }
     }
     

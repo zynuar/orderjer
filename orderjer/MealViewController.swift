@@ -14,6 +14,8 @@ class MealViewController: UIViewController {
     @IBOutlet weak var singleMealImageView: UIImageView!
     @IBOutlet weak var selectedMealNameLabel: UILabel!
     @IBOutlet weak var placeOrderButton: UIButton!
+    @IBOutlet weak var dismissButton: UIButton!
+    
     
     var selectedMeal: Meal?
     
@@ -22,9 +24,13 @@ class MealViewController: UIViewController {
         selectedMealNameLabel.text = "\((selectedMeal?.mealName)!)"
         singleMealImageView.image = selectedMeal?.mealImage
         imageBackground.roundCorners(.topLeft, radius: 50)
-        placeOrderButton.layer.cornerRadius = 16
-        placeOrderButton.layer.borderWidth = 3
+        placeOrderButton.layer.cornerRadius = 8
+        placeOrderButton.layer.borderWidth = 2.5
         placeOrderButton.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    @IBAction func dismissTapped(_ sender: UIButton) {
+          dismiss(animated: true, completion: nil)
     }
     
 }

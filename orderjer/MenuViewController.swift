@@ -85,13 +85,13 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
         return meals.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 110
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "MealView", sender: nil)
+      performSegue(withIdentifier: "MealView", sender: nil)
     }
     
 
