@@ -1,0 +1,6 @@
+framework module Pods_orderjerTests {
+  umbrella header "Pods-orderjerTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
