@@ -10,7 +10,7 @@ import UIKit
 
 class MealViewController: UIViewController {
    var names = ["Vegetables": ["Tomato", "Potato", "Lettuce"], "Fruits": ["Apple", "Banana"]]
-    
+
     @IBOutlet weak var imageBackground: UIImageView!
     @IBOutlet weak var singleMealImageView: UIImageView!
     @IBOutlet weak var selectedMealNameLabel: UILabel!
@@ -80,7 +80,7 @@ extension MealViewController: UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.cellForRow(at: indexPath) {
             singleMealImageView.image = UIImage(named: "unselect")!
             cell.accessoryView = singleMealImageView
-            cell.accessoryType = .none
+           // cell.accessoryType = .none
         }
     }
 }
