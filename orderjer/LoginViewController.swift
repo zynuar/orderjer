@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, NVActivityIndicatorViewable {
 
     @IBOutlet weak var usernameTextField: UITextField!{
         didSet{
@@ -28,6 +29,21 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
     }
 
+    @IBAction func LoadingToSuccess(_ sender: Any) {
+        print("lalu tak")
+        dismiss(animated: true, completion: nil)
+        let size = CGSize(width: 30, height: 30)
+        startAnimating(size, message: "Loading...", type: .pacman, fadeInAnimation: nil)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+            self.stopAnimating(nil)
+            let modalVC = SuccessViewController()
+            modalVC.definesPresentationContext = true
+            modalVC.modalPresentationStyle = .overCurrentContext
+            modalVC.modalTransitionStyle = .crossDissolve
+            self.present(modalVC, animated: true, completion: nil)
+        }
+
+    }
     @IBAction func dismissTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }

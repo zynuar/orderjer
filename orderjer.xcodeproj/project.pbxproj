@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -72,6 +72,7 @@
 		886F2DA7E942E1E3FFC4462C /* Pods-orderjerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-orderjerTests.debug.xcconfig"; path = "Target Support Files/Pods-orderjerTests/Pods-orderjerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8C8ACF381BCCBA0B53312A41 /* Pods-orderjerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-orderjerTests.release.xcconfig"; path = "Target Support Files/Pods-orderjerTests/Pods-orderjerTests.release.xcconfig"; sourceTree = "<group>"; };
 		ABB9349BB4AAB4AA57330A05 /* Pods-orderjerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-orderjerUITests.release.xcconfig"; path = "Target Support Files/Pods-orderjerUITests/Pods-orderjerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C039A02C23375250005680C3 /* NVActivityIndicatorView */ = {isa = PBXFileReference; lastKnownFileType = folder; name = NVActivityIndicatorView; path = Pods/NVActivityIndicatorView; sourceTree = "<group>"; };
 		DC52DFDBCA3E21EA769E12E6 /* Pods_orderjer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_orderjer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD9744312335DCB5004E491F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		DD9744332335E128004E491F /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
@@ -129,7 +130,6 @@
 				6CE20A292C6B9514CFEE0F9E /* Pods-orderjerUITests.debug.xcconfig */,
 				ABB9349BB4AAB4AA57330A05 /* Pods-orderjerUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -204,6 +204,7 @@
 		F1F1F9EA3B5D2A7470804438 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C039A02C23375250005680C3 /* NVActivityIndicatorView */,
 				DC52DFDBCA3E21EA769E12E6 /* Pods_orderjer.framework */,
 				E31499BA5216DF0CAE2CBBEE /* Pods_orderjerTests.framework */,
 				0847EB7A5FEFD4F6CA60E64D /* Pods_orderjerUITests.framework */,
@@ -222,7 +223,7 @@
 				DDDACFD3232CCE1100AA5E10 /* Sources */,
 				DDDACFD4232CCE1100AA5E10 /* Frameworks */,
 				DDDACFD5232CCE1100AA5E10 /* Resources */,
-				106183867F5DF4CF1F6F1A5B /* [CP] Embed Pods Frameworks */,
+				28C732BA01941E7550C4CD65 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -386,7 +387,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		106183867F5DF4CF1F6F1A5B /* [CP] Embed Pods Frameworks */ = {
+		28C732BA01941E7550C4CD65 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, NVActivityIndicatorViewable {
     
     @IBOutlet weak var searchLocation: UITextField! {
         didSet{
@@ -23,6 +24,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     let images = ["kfc","mcd","tealive"]
     
     override func viewDidLoad() {
+        let size = CGSize(width: 30, height: 30)
+        startAnimating(size, message: "Loading...", type: .pacman, fadeInAnimation: nil)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+            self.stopAnimating(nil)
+        }
+        
         super.viewDidLoad()
         self.pageControl.numberOfPages = images.count
         self.carouselView.delegate = self

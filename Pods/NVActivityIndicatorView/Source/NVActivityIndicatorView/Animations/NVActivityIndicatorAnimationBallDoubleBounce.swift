@@ -1,5 +1,5 @@
 //
-//  NVActivityIndicatorBallClipRotate.swift
+//  NVActivityIndicatorAnimationBallsBounce.swift
 //  NVActivityIndicatorView
 //
 // The MIT License (MIT)
@@ -27,45 +27,39 @@
 
 import UIKit
 
-class NVActivityIndicatorAnimationBallClipRotate: NVActivityIndicatorAnimationDelegate {
+class NVActivityIndicatorAnimationBallDoubleBounce: NVActivityIndicatorAnimationDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
-        let duration: CFTimeInterval = 0.75
+        for index in (0...1) {
+            bouncingBall(in: layer, size: size, color: color, startingAt: CACurrentMediaTime() + Double(index))
+        }
+    }
 
-        //    Scale animation
+    fileprivate func bouncingBall(in layer: CALayer, size: CGSize, color: UIColor, startingAt: CFTimeInterval) {
+        // Scale animation
         let scaleAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
-
+        scaleAnimation.duration = 2
         scaleAnimation.keyTimes = [0, 0.5, 1]
-        scaleAnimation.values = [1, 0.6, 1]
+        scaleAnimation.values = [-1, 0, -1]
 
-        // Rotate animation
-        let rotateAnimation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
-
-        rotateAnimation.keyTimes = scaleAnimation.keyTimes
-        rotateAnimation.values = [0, Double.pi, 2 * Double.pi]
-
-        // Animation
-        let animation = CAAnimationGroup()
-
-        animation.animations = [scaleAnimation, rotateAnimation]
         #if swift(>=4.2)
-        animation.timingFunction = CAMediaTimingFunction(name: .linear)
+        scaleAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         #else
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        scaleAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         #endif
-        animation.duration = duration
-        animation.repeatCount = HUGE
-        animation.isRemovedOnCompletion = false
+        scaleAnimation.repeatCount = HUGE
+        scaleAnimation.isRemovedOnCompletion = false
 
-        // Draw circle
-        let circle = NVActivityIndicatorShape.ringThirdFour.layerWith(size: CGSize(width: size.width, height: size.height), color: color)
+        let circle = NVActivityIndicatorShape.circle.layerWith(size: size, color: color)
         let frame = CGRect(x: (layer.bounds.size.width - size.width) / 2,
                            y: (layer.bounds.size.height - size.height) / 2,
                            width: size.width,
                            height: size.height)
 
+        scaleAnimation.beginTime = startingAt
         circle.frame = frame
-        circle.add(animation, forKey: "animation")
+        circle.opacity = 0.6
+        circle.add(scaleAnimation, forKey: "animation")
         layer.addSublayer(circle)
     }
 }
