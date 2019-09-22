@@ -31,6 +31,13 @@ class RegisterViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var confirmPassword: UITextField!{
+        didSet{
+            confirmPassword.setIcon(UIImage(named: "lock")!)
+            confirmPassword.layer.cornerRadius = 8.0
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
