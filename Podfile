@@ -4,7 +4,6 @@
 target 'orderjer' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'NVActivityIndicatorView'
   # Pods for orderjer
 
   target 'orderjerTests' do
