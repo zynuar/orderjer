@@ -29,8 +29,11 @@ class MealViewController: UIViewController {
         super.viewDidLoad()
         mealOptionsTableView.delegate = self
         mealOptionsTableView.dataSource = self
+        mealOptionsTableView.reloadData()
         selectedMealNameLabel.text = "\((selectedMeal?.mealName)!)"
         singleMealImageView.image = selectedMeal?.mealImage
+        
+        
         imageBackground.roundCorners(.topLeft, radius: 50)
         placeOrderButton.layer.cornerRadius = 8
         placeOrderButton.layer.borderWidth = 2.5
@@ -52,8 +55,21 @@ extension MealViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section]
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items[section].count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCell.AccessoryType.checkmark{
+            tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
+        } else {
+            tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        <#code#>
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
