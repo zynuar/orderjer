@@ -9,35 +9,32 @@
 import UIKit
 
 class MealViewController: UIViewController {
-   var names = ["Vegetables": ["Tomato", "Potato", "Lettuce"], "Fruits": ["Apple", "Banana"]]
+   
 
+    @IBOutlet weak var mealOptionsTableView: UITableView!
     @IBOutlet weak var imageBackground: UIImageView!
     @IBOutlet weak var singleMealImageView: UIImageView!
     @IBOutlet weak var selectedMealNameLabel: UILabel!
     @IBOutlet weak var placeOrderButton: UIButton!
     @IBOutlet weak var dismissButton: UIButton!
-
-    var selectedMeal: Meal?
     
-    struct DetailsOfMeal {
-        var sectionName: String!
-        var sectionOpt: [String]!
-    }
-    var arrayOfOptions = [DetailsOfMeal]()
+    var selectedMeal: Meal?
+    let sections = ["Options","Drinks"]
+    let items = [
+        ["Single Meal", "Double Meal", "Ala Carte"],
+        ["Coca-Cola", "Pepsi", "Mountain Dew", "Iced Lemon Tea"]
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mealOptionsTableView.delegate = self
+        mealOptionsTableView.dataSource = self
         selectedMealNameLabel.text = "\((selectedMeal?.mealName)!)"
         singleMealImageView.image = selectedMeal?.mealImage
         imageBackground.roundCorners(.topLeft, radius: 50)
         placeOrderButton.layer.cornerRadius = 8
         placeOrderButton.layer.borderWidth = 2.5
         placeOrderButton.layer.borderColor = UIColor.white.cgColor
-        
-        for (key, value) in names {
-            print("\(key) -> \(value)")
-            arrayOfOptions.append(DetailsOfMeal(sectionName: key, sectionOpt: value))
-        }
     }
     
     @IBAction func dismissTapped(_ sender: UIButton) {
@@ -48,39 +45,24 @@ class MealViewController: UIViewController {
 
 extension MealViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayOfOptions[section].sectionOpt.count
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return arrayOfOptions.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MealOptionsTableViewCell", for: indexPath) as! MealOptionsTableViewCell
-        
-        // Configure the cell...
-        cell.variationsLabel?.text = arrayOfOptions[indexPath.section].sectionOpt[indexPath.row]
-        return cell
+        return sections.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return arrayOfOptions[section].sectionName
+        return sections[section]
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items[section].count
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) {
-            singleMealImageView.image = UIImage(named: "selected")!
-            cell.accessoryView = singleMealImageView
-           // cell.accessoryType = .checkmark
-        }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MealViewController", for: indexPath)
+        cell.textLabel?.text = items[indexPath.section][indexPath.row]
+        return cell
+        
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) {
-            singleMealImageView.image = UIImage(named: "unselect")!
-            cell.accessoryView = singleMealImageView
-           // cell.accessoryType = .none
-        }
-    }
+    
 }
+

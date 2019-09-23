@@ -36,14 +36,13 @@ class LoginViewController: UIViewController, NVActivityIndicatorViewable {
         startAnimating(size, message: "Loading...", type: .pacman, fadeInAnimation: nil)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
             self.stopAnimating(nil)
-            let modalVC = SuccessViewController()
-            modalVC.definesPresentationContext = true
-            modalVC.modalPresentationStyle = .overCurrentContext
-            modalVC.modalTransitionStyle = .crossDissolve
-            self.present(modalVC, animated: true, completion: nil)
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SuccessViewController") as! SuccessViewController
+            vc.modalPresentationStyle = .overCurrentContext
+            self.present(vc, animated: true, completion: nil)
         }
 
     }
+    
     @IBAction func dismissTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
