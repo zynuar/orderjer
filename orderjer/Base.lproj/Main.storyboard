@@ -573,7 +573,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="A0J-mO-81D" kind="presentation" modalTransitionStyle="crossDissolve" id="Hsh-cv-JwU"/>
+                                                    <action selector="LoadingToSuccess:" destination="JjI-2j-I6Q" eventType="touchUpInside" id="rzC-Rj-uB8"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ADs-t0-PCt">
