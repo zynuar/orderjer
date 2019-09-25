@@ -124,16 +124,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4EE5F183233B204B00101FD8 /* homePage */ = {
-			isa = PBXGroup;
-			children = (
-				4E0EB3872330D03700FCEF10 /* CollectionViewCell.swift */,
-				4EEF50E22330EAA00036B6EF /* ShopsCollectionViewCell.swift */,
-				DDDACFDC232CCE1100AA5E10 /* ViewController.swift */,
-			);
-			name = homePage;
-			sourceTree = "<group>";
-		};
 		4EE5F184233B20AF00101FD8 /* menuListingPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,24 +131,6 @@
 				4EE18CBC2331CF6300B8F211 /* MenuViewController.swift */,
 			);
 			path = menuListingPage;
-			sourceTree = "<group>";
-		};
-		4EE5F185233B214D00101FD8 /* mealOptionsPage */ = {
-			isa = PBXGroup;
-			children = (
-				4E6A9476233489DA00017E3C /* MealOptionsTableViewCell.swift */,
-				4ED717AA233362F400387731 /* MealViewController.swift */,
-			);
-			name = mealOptionsPage;
-			sourceTree = "<group>";
-		};
-		4EE5F186233B218100101FD8 /* extension */ = {
-			isa = PBXGroup;
-			children = (
-				4E79EAA723323FB0009505BD /* ImageViewExtension.swift */,
-				4E0EB3852330C97D00FCEF10 /* TextFieldExtensions.swift */,
-			);
-			name = extension;
 			sourceTree = "<group>";
 		};
 		4EE5F187233B21A100101FD8 /* orderSummaryPage */ = {
@@ -179,14 +151,6 @@
 			path = loginPage;
 			sourceTree = "<group>";
 		};
-		4EE5F189233B21D600101FD8 /* registerPage */ = {
-			isa = PBXGroup;
-			children = (
-				DD9744312335DCB5004E491F /* RegisterViewController.swift */,
-			);
-			name = registerPage;
-			sourceTree = "<group>";
-		};
 		4EE5F18A233B222400101FD8 /* dataModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,14 +159,6 @@
 				4EE6D4C1233B3B3C0083E357 /* SelectedMeals.swift */,
 			);
 			path = dataModel;
-			sourceTree = "<group>";
-		};
-		4EE5F18B233B225100101FD8 /* successModalPage */ = {
-			isa = PBXGroup;
-			children = (
-				DD9744332335E128004E491F /* SuccessViewController.swift */,
-			);
-			name = successModalPage;
 			sourceTree = "<group>";
 		};
 		BBB5F4F817A09F374B9446F1 /* Pods */ = {
@@ -243,20 +199,24 @@
 		DDDACFD9232CCE1100AA5E10 /* orderjer */ = {
 			isa = PBXGroup;
 			children = (
+				4E79EAA723323FB0009505BD /* ImageViewExtension.swift */,
+				4E0EB3852330C97D00FCEF10 /* TextFieldExtensions.swift */,
 				DDDACFE3232CCE1300AA5E10 /* LaunchScreen.storyboard */,
 				4EE5F188233B21CD00101FD8 /* loginPage */,
 				DDDACFE6232CCE1300AA5E10 /* Info.plist */,
 				DDDACFDA232CCE1100AA5E10 /* AppDelegate.swift */,
 				DDDACFE1232CCE1300AA5E10 /* Assets.xcassets */,
-				4EE5F18A233B222400101FD8 /* dataModel */,
-				4EE5F186233B218100101FD8 /* extension */,
-				4EE5F183233B204B00101FD8 /* homePage */,
+				4E0EB3872330D03700FCEF10 /* CollectionViewCell.swift */,
+				4EEF50E22330EAA00036B6EF /* ShopsCollectionViewCell.swift */,
+				DDDACFDC232CCE1100AA5E10 /* ViewController.swift */,
+				4E6A9476233489DA00017E3C /* MealOptionsTableViewCell.swift */,
 				DDDACFDE232CCE1100AA5E10 /* Main.storyboard */,
-				4EE5F185233B214D00101FD8 /* mealOptionsPage */,
+				4ED717AA233362F400387731 /* MealViewController.swift */,
+				DD9744312335DCB5004E491F /* RegisterViewController.swift */,
+				DD9744332335E128004E491F /* SuccessViewController.swift */,
+				4EE5F18A233B222400101FD8 /* dataModel */,
 				4EE5F184233B20AF00101FD8 /* menuListingPage */,
 				4EE5F187233B21A100101FD8 /* orderSummaryPage */,
-				4EE5F189233B21D600101FD8 /* registerPage */,
-				4EE5F18B233B225100101FD8 /* successModalPage */,
 			);
 			path = orderjer;
 			sourceTree = "<group>";
