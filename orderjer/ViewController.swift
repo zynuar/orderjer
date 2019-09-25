@@ -21,7 +21,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var shopsView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     var begin = false
-    let images = ["kfc","mcd","tealive"]
+    let carouselImages = ["kfc","mcd","tealive"]
+    let mallImages = ["kfc mall","mcd mall","tealive mall"]
     
     override func viewDidLoad() {
         let size = CGSize(width: 30, height: 30)
@@ -31,7 +32,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
         
         super.viewDidLoad()
-        self.pageControl.numberOfPages = images.count
+        self.pageControl.numberOfPages = carouselImages.count
         self.carouselView.delegate = self
         self.carouselView.dataSource = self
         self.shopsView.delegate = self
@@ -49,20 +50,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.carouselView {
-            return images.count
+            return carouselImages.count
         } else {
-            return images.count
+            return mallImages.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.carouselView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-            cell.carouselImgView.image = UIImage(named: images[indexPath.row])
+            cell.carouselImgView.image = UIImage(named: carouselImages[indexPath.row])
             return cell
         } else {
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopsCollectionViewCell", for: indexPath) as! ShopsCollectionViewCell
-            cell2.shopsViewImage.image = UIImage(named: images[indexPath.row])
+            cell2.shopsViewImage.image = UIImage(named: mallImages[indexPath.row])
             return cell2
         }
     }
@@ -70,7 +71,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.shopsView {
             let vc = storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController
-            vc?.shopsName = images[indexPath.row]
+            vc?.shopsName = mallImages[indexPath.row]
             self.navigationController?.pushViewController(vc!, animated: true)
         }
     }

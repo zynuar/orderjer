@@ -9,16 +9,22 @@
 import UIKit
 
 class OrderSummaryTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    @IBOutlet weak var selectedMealNameLabel: UILabel!
+    @IBOutlet weak var selectedOptionLabel: UILabel!
+    @IBOutlet weak var selectedDrinkLabel: UILabel!
+    @IBOutlet weak var selectedMealPrice: UILabel!
+    @IBOutlet weak var selectedMealQuantity: UILabel!
+    
+    var selectedMealItem: SelectedMeals!
+    
+    func setSelectedMeals(meal: SelectedMeals){
+        selectedMealItem = meal
+        selectedMealNameLabel.text = meal.selectedMealName
+        selectedOptionLabel.text = meal.selectedOptions
+        selectedDrinkLabel.text = meal.selectedDrinks
+        selectedMealPrice.text = "\(meal.selectedMealPrice)"
+        selectedMealQuantity.text = "\(meal.selectedMealQuantity)"
     }
 
 }

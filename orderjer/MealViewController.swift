@@ -59,7 +59,7 @@ class MealViewController: UIViewController {
                      [drinksList(drinkName: "Milo", drinkPrice: 1.60)]]
         items.append(opt)
         items.append(drink)
-        print(items)
+//        print(items)
        
         if selectedMeal?.mealName == "kfc"{
 //            let kfc = MenuOpt(mealName: "kfc",

@@ -24,18 +24,18 @@ class MenuViewController: UIViewController {
         meals = createArray()
         imageBackground.roundCorners(.topLeft, radius: 50)
         shopsNameLabel.text = shopsName
-        if shopsName == "kfc" {
+        if shopsName == "kfc mall" {
             menuImage.image = UIImage(named: "cover menu kfc")
-        } else if shopsName == "mcd" {
+        } else if shopsName == "mcd mall" {
             menuImage.image = UIImage(named: "cover menu mcd")
-        } else if shopsName == "tealive" {
+        } else if shopsName == "tealive mall" {
             menuImage.image = UIImage(named: "cover menu tealive")
         }
     }
     
     func createArray() -> [Meal] {
         var tempMeals: [Meal] = []
-        if shopsName == "kfc" {
+        if shopsName == "kfc mall" {
             
             let meal1 = Meal(mealImage: UIImage(named: "snack-plate")!, mealName: "Snack Plate", mealPrice: "RM 10.00")
             let meal2 = Meal(mealImage: UIImage(named: "dinner-plate")!, mealName: "Dinner Plate", mealPrice: "RM 15.00")
@@ -48,7 +48,7 @@ class MenuViewController: UIViewController {
             tempMeals.append(meal4)
             tempMeals.append(meal5)
             
-        } else if shopsName == "mcd" {
+        } else if shopsName == "mcd mall" {
             
             let meal1 = Meal(mealImage: UIImage(named: "big-mac")!, mealName: "Big Mac", mealPrice: "RM 10.00")
             let meal2 = Meal(mealImage: UIImage(named: "ayam-goreng-mcd")!, mealName: "Ayam Goreng Mcd", mealPrice: "RM 15.00")
@@ -61,7 +61,7 @@ class MenuViewController: UIViewController {
             tempMeals.append(meal4)
             tempMeals.append(meal5)
             
-        } else if shopsName == "tealive" {
+        } else if shopsName == "tealive mall" {
             
             let meal1 = Meal(mealImage: UIImage(named: "Passion Fruit Tea")!, mealName: "Passion Fruit Tea", mealPrice: "RM 10.00")
             let meal2 = Meal(mealImage: UIImage(named: "Radiant Roselle Tea")!, mealName: "Radiant Roselle Tea", mealPrice: "RM 15.00")
