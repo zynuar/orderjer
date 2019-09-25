@@ -9,7 +9,12 @@
 import UIKit
 
 class OrderSummaryTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var selectedMealNameLabel: UILabel!
+    @IBOutlet weak var selectedOptionLabel: UILabel!
+    @IBOutlet weak var selectedDrinkLabel: UILabel!
+    @IBOutlet weak var selectedMealPrice: UILabel!
+    @IBOutlet weak var selectedMealQuantity: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
