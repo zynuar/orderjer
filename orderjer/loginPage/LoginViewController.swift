@@ -8,6 +8,7 @@
 
 import UIKit
 import NVActivityIndicatorView
+import Firebase
 
 class LoginViewController: UIViewController, NVActivityIndicatorViewable {
 
@@ -17,6 +18,7 @@ class LoginViewController: UIViewController, NVActivityIndicatorViewable {
             usernameTextField.layer.cornerRadius = 8.0
         }
     }
+    
     @IBOutlet weak var passwordTextField: UITextField!{
         didSet{
             passwordTextField.setIcon(UIImage(named: "lock")!)
@@ -24,26 +26,47 @@ class LoginViewController: UIViewController, NVActivityIndicatorViewable {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     @IBAction func LoadingToSuccess(_ sender: Any) {
-        print("lalu tak")
-        dismiss(animated: true, completion: nil)
-        let size = CGSize(width: 30, height: 30)
-        startAnimating(size, message: "Loading...", type: .pacman, fadeInAnimation: nil)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
-            self.stopAnimating(nil)
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SuccessViewController") as! SuccessViewController
-            vc.modalPresentationStyle = .overCurrentContext
-            self.present(vc, animated: true, completion: nil)
+        guard let username = usernameTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+       if (username == "" || password == ""){
+            let alertController = UIAlertController(title: "Error", message: "All fields are required", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Dissmiss", style: .default))
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            Auth.auth().signIn(withEmail: username, password: password) {
+                [weak self]user, error in
+                if error == nil && user != nil {
+                    print("User Login!")
+                    self?.performSegue(withIdentifier: "loginToSuccessModal", sender: self)
+                } else {
+                    let alertController = UIAlertController(title: "Error!", message: "Error \(error!.localizedDescription)", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+                    self?.present(alertController, animated: true, completion: nil)
+                }
+            }
         }
-
+//        self.dismiss(animated: true){
+//            let size = CGSize(width: 30, height: 30)
+//            self.startAnimating(size, message: "Loading...", type: .pacman, fadeInAnimation: nil)
+//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+//                self.stopAnimating(nil)
+//
+//                self.performSegue(withIdentifier: "loginToSuccessModal", sender: self)
+//                //            let modalVC = SuccessViewController()
+//                //            modalVC.modalPresentationStyle = .overCurrentContext
+//                //            presentingViewController(modalVC)
+//            }
+//        }
+       
     }
-    
-    @IBAction func dismissTapped(_ sender: UIButton) {
+
+    @IBAction func cancelTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
 }

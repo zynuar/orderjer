@@ -13,9 +13,6 @@ class SuccessViewController: UIViewController, NVActivityIndicatorViewable{
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
-            self.stopAnimating(nil)
-        }
         // Do any additional setup after loading the view.
     }
 

@@ -6,6 +6,11 @@ target 'orderjer' do
   use_frameworks!
   # Pods for orderjer
   pod 'NVActivityIndicatorView'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
+
   target 'orderjerTests' do
     inherit! :search_paths
     # Pods for testing
