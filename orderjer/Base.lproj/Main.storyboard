@@ -31,6 +31,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <segue destination="5dH-dZ-lrx" kind="show" identifier="toSearchPage" id="KLC-ge-17J"/>
+                                </connections>
                             </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WrM-pS-jhF">
                                 <rect key="frame" x="15" y="215" width="384" height="170"/>
@@ -163,17 +166,56 @@
         <!--Search View Controller-->
         <scene sceneID="rPk-AM-Tx7">
             <objects>
-                <viewController storyboardIdentifier="SearchView" id="5dH-dZ-lrx" customClass="SearchViewController" customModule="orderjer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="SearchViewController" storyboardIdentifier="SearchViewController" id="5dH-dZ-lrx" customClass="SearchViewController" customModule="orderjer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iBb-EC-BTs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search by location or shop name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R1h-fb-Cd3">
+                                <rect key="frame" x="8" y="96" width="398" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="KHm-Ax-tAq"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lDC-6a-bA0">
+                                <rect key="frame" x="8" y="154" width="398" height="708"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchListCell" id="Vx7-TS-1MJ">
+                                        <rect key="frame" x="0.0" y="28" width="398" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vx7-TS-1MJ" id="BkJ-T2-owq">
+                                            <rect key="frame" x="0.0" y="0.0" width="398" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="R1h-fb-Cd3" firstAttribute="leading" secondItem="71A-cG-1vw" secondAttribute="leading" constant="8" id="Epr-qX-GuF"/>
+                            <constraint firstItem="71A-cG-1vw" firstAttribute="trailing" secondItem="lDC-6a-bA0" secondAttribute="trailing" constant="8" id="UHh-7N-XQ2"/>
+                            <constraint firstItem="lDC-6a-bA0" firstAttribute="bottom" secondItem="71A-cG-1vw" secondAttribute="bottom" id="Yhs-Ec-8W2"/>
+                            <constraint firstItem="71A-cG-1vw" firstAttribute="trailing" secondItem="R1h-fb-Cd3" secondAttribute="trailing" constant="8" id="azh-VZ-3MM"/>
+                            <constraint firstItem="R1h-fb-Cd3" firstAttribute="top" secondItem="71A-cG-1vw" secondAttribute="top" constant="8" id="bzQ-of-w0p"/>
+                            <constraint firstItem="lDC-6a-bA0" firstAttribute="top" secondItem="R1h-fb-Cd3" secondAttribute="bottom" constant="8" id="iAP-nL-N6q"/>
+                            <constraint firstItem="lDC-6a-bA0" firstAttribute="top" secondItem="R1h-fb-Cd3" secondAttribute="bottom" constant="8" id="qsk-gd-jHe"/>
+                            <constraint firstItem="lDC-6a-bA0" firstAttribute="leading" secondItem="71A-cG-1vw" secondAttribute="leading" constant="8" id="zcs-aY-XpU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="71A-cG-1vw"/>
                     </view>
+                    <connections>
+                        <outlet property="searchBarTextField" destination="R1h-fb-Cd3" id="ej1-9e-e1n"/>
+                        <outlet property="tableViewList" destination="lDC-6a-bA0" id="M03-Nw-QO6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j7k-qW-krt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="958" y="751"/>
+            <point key="canvasLocation" x="957.97101449275374" y="750.66964285714278"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="ei8-kr-rCN">

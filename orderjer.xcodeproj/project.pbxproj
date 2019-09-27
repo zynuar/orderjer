@@ -15,6 +15,7 @@
 		4E6A9477233489DA00017E3C /* MealOptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6A9476233489DA00017E3C /* MealOptionsTableViewCell.swift */; };
 		4E79EAA823323FB0009505BD /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E79EAA723323FB0009505BD /* ImageViewExtension.swift */; };
 		4E93E0622334AB3200C7A818 /* OrderSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93E0612334AB3200C7A818 /* OrderSummaryViewController.swift */; };
+		4EA03348233DF6A700F9BDB6 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA03347233DF6A700F9BDB6 /* Shop.swift */; };
 		4EB7219C233317990002AB65 /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB7219B233317990002AB65 /* MealTableViewCell.swift */; };
 		4EB7219E23331B350002AB65 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB7219D23331B350002AB65 /* Meal.swift */; };
 		4ED717AB233362F400387731 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED717AA233362F400387731 /* MealViewController.swift */; };
@@ -65,6 +66,7 @@
 		4E6A9476233489DA00017E3C /* MealOptionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealOptionsTableViewCell.swift; sourceTree = "<group>"; };
 		4E79EAA723323FB0009505BD /* ImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
 		4E93E0612334AB3200C7A818 /* OrderSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryViewController.swift; sourceTree = "<group>"; };
+		4EA03347233DF6A700F9BDB6 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Shop.swift; path = /Users/izzaty/Documents/2509/orderjer/orderjer/dataModel/Shop.swift; sourceTree = "<absolute>"; };
 		4EB7219B233317990002AB65 /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 		4EB7219D23331B350002AB65 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		4ED717AA233362F400387731 /* MealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		4EE5F18A233B222400101FD8 /* dataModel */ = {
 			isa = PBXGroup;
 			children = (
+				4EA03347233DF6A700F9BDB6 /* Shop.swift */,
 				4EB7219D23331B350002AB65 /* Meal.swift */,
 				4E0EB37723307C6100FCEF10 /* System.swift */,
 				4EE6D4C1233B3B3C0083E357 /* SelectedMeals.swift */,
@@ -496,6 +499,7 @@
 				DD9744322335DCB5004E491F /* RegisterViewController.swift in Sources */,
 				4EF2CD502334C0E100CFCC56 /* LoginModalView.swift in Sources */,
 				4ED717AB233362F400387731 /* MealViewController.swift in Sources */,
+				4EA03348233DF6A700F9BDB6 /* Shop.swift in Sources */,
 				DDDACFDB232CCE1100AA5E10 /* AppDelegate.swift in Sources */,
 				4E6A9477233489DA00017E3C /* MealOptionsTableViewCell.swift in Sources */,
 			);

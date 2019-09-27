@@ -51,10 +51,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool{
-        let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        let nvc = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-        self.present(nvc, animated: true, completion: nil)
-        return true
+        performSegue(withIdentifier: "toSearchPage", sender: nil)
+        return false
     }
     
     func startTimer() {
