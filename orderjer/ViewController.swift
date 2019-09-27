@@ -9,7 +9,7 @@
 import UIKit
 import NVActivityIndicatorView
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, NVActivityIndicatorViewable {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate, NVActivityIndicatorViewable {
     
     @IBOutlet weak var searchLocation: UITextField! {
         didSet{
@@ -21,33 +21,58 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var shopsView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     var begin = false
+    var x = 1
     let carouselImages = ["kfc","mcd","tealive"]
     let mallImages = ["kfc mall","mcd mall","tealive mall"]
     
     override func viewDidLoad() {
+        if let navController = navigationController {
+            System.clearNavigationBar(forBar: navController.navigationBar)
+            navController.view.backgroundColor = .clear
+        }
         let size = CGSize(width: 30, height: 30)
         startAnimating(size, message: "Loading...", type: .pacman, fadeInAnimation: nil)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
             self.stopAnimating(nil)
         }
-        
         super.viewDidLoad()
         self.pageControl.numberOfPages = carouselImages.count
         self.carouselView.delegate = self
         self.carouselView.dataSource = self
         self.shopsView.delegate = self
         self.shopsView.dataSource = self
-        if let navController = navigationController {
-            System.clearNavigationBar(forBar: navController.navigationBar)
-            navController.view.backgroundColor = .clear
-        }
+        searchLocation.delegate = self
+        self.startTimer()
         searchLocation.layer.cornerRadius = 24.0
         searchLocation.layer.shadowOffset = CGSize(width: 0, height: 3)
         searchLocation.layer.shadowColor = UIColor.black.cgColor
         searchLocation.layer.borderColor = UIColor.black.withAlphaComponent(0.25).cgColor
         searchLocation.layer.shadowOpacity = 2
     }
-
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool{
+        let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let nvc = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        self.present(nvc, animated: true, completion: nil)
+        return true
+    }
+    
+    func startTimer() {
+        let _ = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.scrollAutomatically), userInfo: nil, repeats: true)
+    }
+    
+    @objc func scrollAutomatically(){
+       self.pageControl.currentPage = x
+        if self.x < carouselImages.count {
+            let indexPath = IndexPath(item: x, section: 0)
+            self.carouselView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            self.x = self.x + 1
+        } else {
+            self.x = 0
+            self.carouselView.scrollToItem(at: IndexPath(item: x, section: 0), at: .centeredHorizontally, animated: true)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.carouselView {
             return carouselImages.count
@@ -81,6 +106,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let index = scrollView.contentOffset.x / width
         let roundedIndex = round(index)
         self.pageControl?.currentPage = Int(roundedIndex)
+    }
+    
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        if (context.nextFocusedItem != nil){
+            carouselView.scrollToItem(at: context.nextFocusedItem as! IndexPath, at: .centeredHorizontally, animated: true)
+        }
     }
 
 }
