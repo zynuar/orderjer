@@ -10,9 +10,4 @@ import UIKit
 
 class MealOptionsTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var radioButtonImageView: UIImageView!
-    @IBOutlet weak var variationsLabel: UILabel!
-    @IBOutlet weak var addOnPriceLabel: UILabel!
-    
-
 }

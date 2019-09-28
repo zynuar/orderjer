@@ -7,12 +7,12 @@
 //
 
 import UIKit
-
-class SuccessViewController: UIViewController {
+import  NVActivityIndicatorView
+class SuccessViewController: UIViewController, NVActivityIndicatorViewable{
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
