@@ -1,3 +1,9 @@
 .DS_Store
 Pods/
 xcuserdata/
+orderjer.xcworkspace/xcuserdata/
+UserInterfaceState.xcuserstate
+DerivedData/
+build/
+orderjer.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+
