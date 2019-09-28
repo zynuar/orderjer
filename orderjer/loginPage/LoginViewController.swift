@@ -36,14 +36,26 @@ class LoginViewController: UIViewController, NVActivityIndicatorViewable {
         
        if (username == "" || password == ""){
             let alertController = UIAlertController(title: "Error", message: "All fields are required", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Dissmiss", style: .default))
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
             self.present(alertController, animated: true, completion: nil)
         } else {
             Auth.auth().signIn(withEmail: username, password: password) {
-                [weak self]user, error in
+                [weak self] user, error in
                 if error == nil && user != nil {
                     print("User Login!")
-                    self?.performSegue(withIdentifier: "loginToSuccessModal", sender: self)
+                    self?.dismiss(animated: true){
+                               let size = CGSize(width: 30, height: 30)
+                        self?.startAnimating(size, message: "Loading...", type: .pacman, fadeInAnimation: nil)
+                               DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+                                self?.stopAnimating(nil)
+
+                                self?.performSegue(withIdentifier: "loginToSuccessModal", sender: self)
+                                   //            let modalVC = SuccessViewController()
+                                   //            modalVC.modalPresentationStyle = .overCurrentContext
+                                   //            presentingViewController(modalVC)
+                               }
+                           }
+//                    self?.performSegue(withIdentifier: "loginToSuccessModal", sender: self)
                 } else {
                     let alertController = UIAlertController(title: "Error!", message: "Error \(error!.localizedDescription)", preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
@@ -51,18 +63,7 @@ class LoginViewController: UIViewController, NVActivityIndicatorViewable {
                 }
             }
         }
-//        self.dismiss(animated: true){
-//            let size = CGSize(width: 30, height: 30)
-//            self.startAnimating(size, message: "Loading...", type: .pacman, fadeInAnimation: nil)
-//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
-//                self.stopAnimating(nil)
-//
-//                self.performSegue(withIdentifier: "loginToSuccessModal", sender: self)
-//                //            let modalVC = SuccessViewController()
-//                //            modalVC.modalPresentationStyle = .overCurrentContext
-//                //            presentingViewController(modalVC)
-//            }
-//        }
+       
        
     }
 

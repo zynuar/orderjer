@@ -21,6 +21,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         meals = createArray()
         imageBackground.roundCorners(.topLeft, radius: 50)
         shopsNameLabel.text = shopsName
