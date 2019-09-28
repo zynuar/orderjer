@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/izzaty/Documents/2509/orderjer/orderjer/dataModel/Shop.swift">
-   </FileRef>
-   <FileRef
       location = "group:orderjer.xcodeproj">
    </FileRef>
    <FileRef

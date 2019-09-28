@@ -15,7 +15,6 @@
 		4E6A9477233489DA00017E3C /* MealOptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6A9476233489DA00017E3C /* MealOptionsTableViewCell.swift */; };
 		4E79EAA823323FB0009505BD /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E79EAA723323FB0009505BD /* ImageViewExtension.swift */; };
 		4E93E0622334AB3200C7A818 /* OrderSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93E0612334AB3200C7A818 /* OrderSummaryViewController.swift */; };
-		4EA03348233DF6A700F9BDB6 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA03347233DF6A700F9BDB6 /* Shop.swift */; };
 		4EB7219C233317990002AB65 /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB7219B233317990002AB65 /* MealTableViewCell.swift */; };
 		4EB7219E23331B350002AB65 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB7219D23331B350002AB65 /* Meal.swift */; };
 		4ED717AB233362F400387731 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED717AA233362F400387731 /* MealViewController.swift */; };
@@ -27,6 +26,7 @@
 		4EF2CD502334C0E100CFCC56 /* LoginModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF2CD4F2334C0E100CFCC56 /* LoginModalView.swift */; };
 		4EF2CD522334C26000CFCC56 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF2CD512334C26000CFCC56 /* LoginViewController.swift */; };
 		C208917D4A4A17698A8818EF /* Pods_orderjerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E31499BA5216DF0CAE2CBBEE /* Pods_orderjerTests.framework */; };
+		DD6D59B8233F039000DA70C3 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6D59B7233F039000DA70C3 /* Shop.swift */; };
 		DD9744322335DCB5004E491F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9744312335DCB5004E491F /* RegisterViewController.swift */; };
 		DD9744342335E128004E491F /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9744332335E128004E491F /* SuccessViewController.swift */; };
 		DDDACFDB232CCE1100AA5E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDACFDA232CCE1100AA5E10 /* AppDelegate.swift */; };
@@ -66,7 +66,6 @@
 		4E6A9476233489DA00017E3C /* MealOptionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealOptionsTableViewCell.swift; sourceTree = "<group>"; };
 		4E79EAA723323FB0009505BD /* ImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
 		4E93E0612334AB3200C7A818 /* OrderSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryViewController.swift; sourceTree = "<group>"; };
-		4EA03347233DF6A700F9BDB6 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Shop.swift; path = /Users/izzaty/Documents/2509/orderjer/orderjer/dataModel/Shop.swift; sourceTree = "<absolute>"; };
 		4EB7219B233317990002AB65 /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 		4EB7219D23331B350002AB65 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		4ED717AA233362F400387731 /* MealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +83,7 @@
 		ABB9349BB4AAB4AA57330A05 /* Pods-orderjerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-orderjerUITests.release.xcconfig"; path = "Target Support Files/Pods-orderjerUITests/Pods-orderjerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C039A02C23375250005680C3 /* NVActivityIndicatorView */ = {isa = PBXFileReference; lastKnownFileType = folder; name = NVActivityIndicatorView; path = Pods/NVActivityIndicatorView; sourceTree = "<group>"; };
 		DC52DFDBCA3E21EA769E12E6 /* Pods_orderjer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_orderjer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD6D59B7233F039000DA70C3 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		DD9744312335DCB5004E491F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		DD9744332335E128004E491F /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
 		DDDACFD7232CCE1100AA5E10 /* orderjer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = orderjer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,10 +160,10 @@
 		4EE5F18A233B222400101FD8 /* dataModel */ = {
 			isa = PBXGroup;
 			children = (
-				4EA03347233DF6A700F9BDB6 /* Shop.swift */,
 				4EB7219D23331B350002AB65 /* Meal.swift */,
 				4E0EB37723307C6100FCEF10 /* System.swift */,
 				4EE6D4C1233B3B3C0083E357 /* SelectedMeals.swift */,
+				DD6D59B7233F039000DA70C3 /* Shop.swift */,
 			);
 			path = dataModel;
 			sourceTree = "<group>";
@@ -499,7 +499,7 @@
 				DD9744322335DCB5004E491F /* RegisterViewController.swift in Sources */,
 				4EF2CD502334C0E100CFCC56 /* LoginModalView.swift in Sources */,
 				4ED717AB233362F400387731 /* MealViewController.swift in Sources */,
-				4EA03348233DF6A700F9BDB6 /* Shop.swift in Sources */,
+				DD6D59B8233F039000DA70C3 /* Shop.swift in Sources */,
 				DDDACFDB232CCE1100AA5E10 /* AppDelegate.swift in Sources */,
 				4E6A9477233489DA00017E3C /* MealOptionsTableViewCell.swift in Sources */,
 			);
