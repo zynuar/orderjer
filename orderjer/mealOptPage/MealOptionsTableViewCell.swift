@@ -10,8 +10,10 @@ import UIKit
 
 class MealOptionsTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var titleLabel: UILabel!
+    
+
     @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     
     var mealItem: OptMeal!
     var drinksItem: OptDrinks!

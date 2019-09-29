@@ -37,6 +37,7 @@ class MealViewController: UIViewController {
         
         optMeals = createOptMealArray()
         optDrinks = createOptDrinkArray()
+
     }
     
     func createOptMealArray() -> [OptMeal] {
@@ -117,6 +118,7 @@ class MealViewController: UIViewController {
 
 extension MealViewController: UITableViewDelegate, UITableViewDataSource {
 
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
@@ -137,27 +139,44 @@ extension MealViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         let cell = tableView.cellForRow(at: indexPath) as! MealOptionsTableViewCell
+        
         if indexPath.section == 0 {
-            tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
+            print("\(String(describing: cell.mealItem?.optName))")
         } else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
+            print("\(String(describing: cell.drinksItem?.optDrinksName))")
         }
-    }
+       
+        
+        
+        let previusSelectedCellIndexPath = self.addSelectedCellWithSection(indexPath);
 
-// MealOptCell
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
-        } else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
+        if(previusSelectedCellIndexPath != nil)
+        {
+            let previusSelectedCell = tableView.cellForRow(at: previusSelectedCellIndexPath!) as! MealOptionsTableViewCell
+            let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+            imgView.image = UIImage(named: "{your image name}")!
+            cell.accessoryView = imgView
+            previusSelectedCell.accessoryType = UITableViewCell.AccessoryType.none
+            cell.accessoryType = UITableViewCell.AccessoryType.checkmark
+            tableView.deselectRow(at: previusSelectedCellIndexPath!, animated: true)
         }
-    }
+        else
+        {
+            cell.accessoryType = UITableViewCell.AccessoryType.checkmark
+        }
 
-    func addSelectedCellWithSection(_ indexPath:IndexPath) -> IndexPath? {
-        let existingIndexPath = selectedRows["\(indexPath.section)"]
-        selectedRows["\(indexPath.section)"] = indexPath
+        
+        for selectedIndexPath: IndexPath in tableView.indexPathsForSelectedRows!
+        {
+            if selectedIndexPath.section == indexPath.section
+            {
+                cell.accessoryType = UITableViewCell.AccessoryType.checkmark
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
+        }
 
-        return existingIndexPath
+        
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -173,6 +192,23 @@ extension MealViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 
+    func addSelectedCellWithSection(_ indexPath:IndexPath) -> IndexPath? {
+        let existingIndexPath = selectedRows["\(indexPath.section)"]
+        selectedRows["\(indexPath.section)"] = indexPath
 
+        return existingIndexPath
+    }
+
+    func indexPathIsSelected(_ indexPath:IndexPath) ->Bool {
+        if let selectedIndexPathInSection = selectedRows["\(indexPath.section)"] {
+            if(selectedIndexPathInSection.row == indexPath.row) {
+                
+                return true
+            }
+        }
+
+        return false
+    }
+    
 }
 
