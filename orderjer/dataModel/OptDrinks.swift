@@ -12,11 +12,9 @@ class OptDrinks {
 
     var optDrinksName: String
     var optDrinksPrice: Double
-    var type: String
 
-    init(optDrinksName: String, optDrinksPrice: Double, type: String) {
+    init(optDrinksName: String, optDrinksPrice: Double) {
         self.optDrinksName = optDrinksName
         self.optDrinksPrice = optDrinksPrice
-        self.type = type
     }
 }

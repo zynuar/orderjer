@@ -20,6 +20,5 @@ class MealTableViewCell: UITableViewCell {
         mealItem = meal
         mealImageView.image = meal.mealImage
         mealNameLabel.text = meal.mealName
-        mealPriceLabel.text = meal.mealPrice
     }
 }

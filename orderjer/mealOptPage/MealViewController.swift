@@ -18,6 +18,8 @@ class MealViewController: UIViewController {
     @IBOutlet weak var dismissButton: UIButton!
     
     var selectedMeal: Meal?
+    var mealOptMeals: [Any] = []
+    var mealOptDrinks: [Any] = []
     var selectedRows = [String:IndexPath]()
     let sections = ["Options","Drinks"]
     // initialize empty array
@@ -26,7 +28,7 @@ class MealViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("mainCourse -> \((selectedMeal?.mainCourse)!)")
         selectedMealNameLabel.text = "\((selectedMeal?.mealName)!)"
         singleMealImageView.image = selectedMeal?.mealImage
 
@@ -42,71 +44,20 @@ class MealViewController: UIViewController {
     
     func createOptMealArray() -> [OptMeal] {
         var tempMeals: [OptMeal] = []
-        if selectedMeal?.mealName == "Snack Plate" {
-            let meal1 = OptMeal(optName: "Single Meal", optPrice: 10.00, type: "Meal")
-            let meal2 = OptMeal(optName: "Regular Meal", optPrice: 12.00, type: "Meal")
-            let meal3 = OptMeal(optName: "Ala Carte", optPrice: 6.00, type: "Meal")
-
-            tempMeals.append(meal1)
-            tempMeals.append(meal2)
-            tempMeals.append(meal3)
-
-        } else if selectedMeal?.mealName == "Dinner Plate" {
-            
-            let meal1 = OptMeal(optName: "Single Meal", optPrice: 10.00, type: "Meal")
-            let meal2 = OptMeal(optName: "Regular Meal", optPrice: 12.00, type: "Meal")
-            let meal3 = OptMeal(optName: "Ala Carte", optPrice: 6.00, type: "Meal")
-           
-            tempMeals.append(meal1)
-            tempMeals.append(meal2)
-            tempMeals.append(meal3)
- 
-        } else if selectedMeal?.mealName == "tealive" {
-            
-            let meal1 = OptMeal(optName: "Single Meal", optPrice: 10.00, type: "Meal")
-            let meal2 = OptMeal(optName: "Regular Meal", optPrice: 12.00, type: "Meal")
-            let meal3 = OptMeal(optName: "Ala Carte", optPrice: 6.00, type: "Meal")
-
-            tempMeals.append(meal1)
-            tempMeals.append(meal2)
-            tempMeals.append(meal3)
-
-            
+        var nameType: String = ""
+        var foodPrice: Double
+        for optMeals in selectedMeal!.mainCourse as! [Dictionary<String, AnyObject>]{
+            nameType = optMeals["nameType"] as! String
+            foodPrice = optMeals["foodPrice"] as! Double
+            let optMeal = OptMeal(optName: nameType, optPrice: foodPrice)
+            tempMeals.append(optMeal)
         }
         return tempMeals
     }
     
     func createOptDrinkArray() -> [OptDrinks] {
         var tempMeals: [OptDrinks] = []
-        if selectedMeal?.mealName == "Snack Plate" {
-            
-            let meal1 = OptDrinks(optDrinksName: "Coca-Cola", optDrinksPrice: 0.00, type: "Drinks")
-            let meal2 = OptDrinks(optDrinksName: "Mountain Dew", optDrinksPrice: 0.00, type: "Drinks")
-            let meal3 = OptDrinks(optDrinksName: "Ice Lemon Tea", optDrinksPrice: 1.80, type: "Drinks")
-          
-            tempMeals.append(meal1)
-            tempMeals.append(meal2)
-            tempMeals.append(meal3)
-            
-        } else if selectedMeal?.mealName == "Dinner Plate" {
-            
-            let meal1 = OptDrinks(optDrinksName: "Coca-Cola", optDrinksPrice: 0.00, type: "Drinks")
-            let meal2 = OptDrinks(optDrinksName: "Mountain Dew", optDrinksPrice: 0.00, type: "Drinks")
-            let meal3 = OptDrinks(optDrinksName: "Ice Lemon Tea", optDrinksPrice: 1.80, type: "Drinks")
-            
-            tempMeals.append(meal1)
-            tempMeals.append(meal2)
-            tempMeals.append(meal3)
-        
-        } else if selectedMeal?.mealName == "tealive" {
-            
-            let meal1 = OptDrinks(optDrinksName: "Coca-Cola", optDrinksPrice: 0.00, type: "Drinks")
-            let meal2 = OptDrinks(optDrinksName: "Mountain Dew", optDrinksPrice: 0.00, type: "Drinks")
-            let meal3 = OptDrinks(optDrinksName: "Ice Lemon Tea", optDrinksPrice: 1.80, type: "Drinks")
-            tempMeals.append(meal1)
-            tempMeals.append(meal2)
-            tempMeals.append(meal3)
-        }
+        tempMeals = mealOptDrinks as! [OptDrinks]
         return tempMeals
     }
     
@@ -117,7 +68,6 @@ class MealViewController: UIViewController {
 }
 
 extension MealViewController: UITableViewDelegate, UITableViewDataSource {
-
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
@@ -134,56 +84,73 @@ extension MealViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             counts = optDrinks.count
         }
-
         return counts
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         let cell = tableView.cellForRow(at: indexPath) as! MealOptionsTableViewCell
+        let cell = tableView.cellForRow(at: indexPath) as! MealOptionsTableViewCell
         
+        // how to add selected meal and drinks into an array
         if indexPath.section == 0 {
             print("\(String(describing: cell.mealItem?.optName))")
         } else {
             print("\(String(describing: cell.drinksItem?.optDrinksName))")
         }
        
-        
-        
         let previusSelectedCellIndexPath = self.addSelectedCellWithSection(indexPath);
 
         if(previusSelectedCellIndexPath != nil)
         {
             let previusSelectedCell = tableView.cellForRow(at: previusSelectedCellIndexPath!) as! MealOptionsTableViewCell
+            
             let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-            imgView.image = UIImage(named: "{your image name}")!
-            cell.accessoryView = imgView
-            previusSelectedCell.accessoryType = UITableViewCell.AccessoryType.none
-            cell.accessoryType = UITableViewCell.AccessoryType.checkmark
+            imgView.image = UIImage(named: "unselect")!
+            let highlightedImg = UIImage(named: "highlighted")!
+            
+            previusSelectedCell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+            previusSelectedCell.accessoryView = UIImageView(image: imgView.image, highlightedImage: highlightedImg)
+            
+            let imgView2 = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+            imgView2.image = UIImage(named: "selected")!
+            
+            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+            cell.accessoryView = UIImageView(image: imgView2.image, highlightedImage: highlightedImg)
             tableView.deselectRow(at: previusSelectedCellIndexPath!, animated: true)
         }
         else
         {
-            cell.accessoryType = UITableViewCell.AccessoryType.checkmark
+            let imgView2 = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+            imgView2.image = UIImage(named: "selected")!
+            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+            let highlightedImg = UIImage(named: "highlighted")!
+            cell.accessoryView = UIImageView(image: imgView2.image, highlightedImage: highlightedImg)
         }
-
         
         for selectedIndexPath: IndexPath in tableView.indexPathsForSelectedRows!
         {
             if selectedIndexPath.section == indexPath.section
             {
-                cell.accessoryType = UITableViewCell.AccessoryType.checkmark
+                let imgView2 = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+                imgView2.image = UIImage(named: "selected")!
+                cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+                let highlightedImg = UIImage(named: "highlighted")!
+                cell.accessoryView = UIImageView(image: imgView2.image, highlightedImage: highlightedImg)
                 tableView.deselectRow(at: indexPath, animated: true)
             }
         }
-
-        
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MealOptCell") as! MealOptionsTableViewCell
+        let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        imgView.image = UIImage(named: "unselect")!
+        let highlightedImg = UIImage(named: "highlighted")!
+        
+        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        cell.accessoryView = UIImageView(image: imgView.image, highlightedImage: highlightedImg)
+        
         if indexPath.section == 0 {
             let meal = optMeals[indexPath.row]
-            
             cell.setOptMeals(meal: meal)
         } else {
             let drink = optDrinks[indexPath.row]
@@ -195,18 +162,15 @@ extension MealViewController: UITableViewDelegate, UITableViewDataSource {
     func addSelectedCellWithSection(_ indexPath:IndexPath) -> IndexPath? {
         let existingIndexPath = selectedRows["\(indexPath.section)"]
         selectedRows["\(indexPath.section)"] = indexPath
-
         return existingIndexPath
     }
 
     func indexPathIsSelected(_ indexPath:IndexPath) ->Bool {
         if let selectedIndexPathInSection = selectedRows["\(indexPath.section)"] {
             if(selectedIndexPathInSection.row == indexPath.row) {
-                
                 return true
             }
         }
-
         return false
     }
     

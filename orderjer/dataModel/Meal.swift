@@ -12,11 +12,11 @@ class Meal {
     
     var mealImage: UIImage?
     var mealName: String
-    var mealPrice: String
+   var mainCourse: [Any]
     
-    init(mealImage: UIImage, mealName: String, mealPrice: String) {
+    init(mealImage: UIImage, mealName: String, mainCourse: [Any]) {
         self.mealImage = mealImage
         self.mealName = mealName
-        self.mealPrice = mealPrice
+        self.mainCourse = mainCourse
     }
 }

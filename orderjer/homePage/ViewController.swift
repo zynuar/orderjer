@@ -22,8 +22,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var pageControl: UIPageControl!
     var begin = false
     var x = 1
-    let carouselImages = ["kfc","mcd","tealive"]
-    let mallImages = ["kfc mall","mcd mall","tealive mall"]
+    let carouselImages = ["kfcImg","mcdImg","tealiveImg"]
+//    let mallImages = ["KFC","McDonald","Tealive"]
+    var mallImages: [String] = []
     
     override func viewDidLoad() {
         if let navController = navigationController {
@@ -41,8 +42,41 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.carouselView.dataSource = self
         self.shopsView.delegate = self
         self.shopsView.dataSource = self
-        searchLocation.delegate = self
+        seacrhBarCustomization()
         self.startTimer()
+        readJson() 
+    }
+    
+    func readJson() {
+        guard let path = Bundle.main.path(forResource: "data", ofType: "json") else { return }
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+//            print(json)
+            
+            guard let array = json as? [Any] else { return }
+//            print(array)
+            for shop in array {
+                
+                let shopDict = shop as? [String: Any]
+//                print(shopDict?["mainCourse"] ?? "Not found")
+                let shopName = shopDict?["shopName"]
+//                let food  = shopDict?["mainCourse"]
+                print(shopName ?? "shopName not found")
+//                print(food ?? "food not found")
+                mallImages.append(shopName as! String)
+            }
+        } catch {
+            print(error.localizedDescription)
+            
+        }
+        
+    }
+    
+    func seacrhBarCustomization() {
+        searchLocation.delegate = self
         searchLocation.layer.cornerRadius = 24.0
         searchLocation.layer.shadowOffset = CGSize(width: 0, height: 3)
         searchLocation.layer.shadowColor = UIColor.black.cgColor

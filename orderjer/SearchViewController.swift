@@ -19,17 +19,17 @@ class SearchViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let shop1 = Shop(shopName: "mcd", shopLocation: "Damansara")
-        let shop2 = Shop(shopName: "kfc", shopLocation: "Kuala Lumpur")
-        let shop3 = Shop(shopName: "tealive", shopLocation: "Petaling Jaya")
-        
-        shopsArray.append(shop1)
-        shopsArray.append(shop2)
-        shopsArray.append(shop3)
-        
-        for str in shopsArray {
-            searchArray.append(str)
-        }
+//        let shop1 = Shop(shopName: "mcd", shopLocation: "Damansara")
+//        let shop2 = Shop(shopName: "kfc", shopLocation: "Kuala Lumpur")
+//        let shop3 = Shop(shopName: "tealive", shopLocation: "Petaling Jaya")
+//
+//        shopsArray.append(shop1)
+//        shopsArray.append(shop2)
+//        shopsArray.append(shop3)
+//
+//        for str in shopsArray {
+//            searchArray.append(str)
+//        }
         
         tableViewList.dataSource = self
     }

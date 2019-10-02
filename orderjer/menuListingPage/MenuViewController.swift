@@ -18,83 +18,88 @@ class MenuViewController: UIViewController {
     var shopsName = ""
     // initialize empty array
     var meals: [Meal] = []
+    var optMeals: [OptMeal] = []
+    var optDrinks: [OptDrinks] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        meals = createArray()
+        readJson()
         imageBackground.roundCorners(.topLeft, radius: 50)
         shopsNameLabel.text = shopsName
-        if shopsName == "kfc mall" {
+        if shopsName == "KFC" {
             menuImage.image = UIImage(named: "cover menu kfc")
-        } else if shopsName == "mcd mall" {
+        } else if shopsName == "McDonald" {
             menuImage.image = UIImage(named: "cover menu mcd")
-        } else if shopsName == "tealive mall" {
+        } else if shopsName == "Tealive" {
             menuImage.image = UIImage(named: "cover menu tealive")
         }
     }
     
-    func createArray() -> [Meal] {
-        var tempMeals: [Meal] = []
-        if shopsName == "kfc mall" {
-            
-            let meal1 = Meal(mealImage: UIImage(named: "snack-plate")!, mealName: "Snack Plate", mealPrice: "RM 10.00")
-            let meal2 = Meal(mealImage: UIImage(named: "dinner-plate")!, mealName: "Dinner Plate", mealPrice: "RM 15.00")
-            let meal3 = Meal(mealImage: UIImage(named: "zinger-burger")!, mealName: "Zinger Burger", mealPrice: "RM 18.00")
-            let meal4 = Meal(mealImage: UIImage(named: "wrap-cheezy")!, mealName: "Cheezy Wrap", mealPrice: "RM 12.00")
-            let meal5 = Meal(mealImage: UIImage(named: "family-feast")!, mealName: "Family Feast", mealPrice: "RM 53.00")
-            tempMeals.append(meal1)
-            tempMeals.append(meal2)
-            tempMeals.append(meal3)
-            tempMeals.append(meal4)
-            tempMeals.append(meal5)
-            
-        } else if shopsName == "mcd mall" {
-            
-            let meal1 = Meal(mealImage: UIImage(named: "big-mac")!, mealName: "Big Mac", mealPrice: "RM 10.00")
-            let meal2 = Meal(mealImage: UIImage(named: "ayam-goreng-mcd")!, mealName: "Ayam Goreng Mcd", mealPrice: "RM 15.00")
-            let meal3 = Meal(mealImage: UIImage(named: "double-cheese-burger")!, mealName: "Double Cheese Burger", mealPrice: "RM 12.00")
-            let meal4 = Meal(mealImage: UIImage(named: "double-quarter-pounder")!, mealName: "Double Quarter Pounder", mealPrice: "RM 19.00")
-            let meal5 = Meal(mealImage: UIImage(named: "grilled-chicken-burger")!, mealName: "Grilled Chicken Burger", mealPrice: "RM 12.00")
-            tempMeals.append(meal1)
-            tempMeals.append(meal2)
-            tempMeals.append(meal3)
-            tempMeals.append(meal4)
-            tempMeals.append(meal5)
-            
-        } else if shopsName == "tealive mall" {
-            
-            let meal1 = Meal(mealImage: UIImage(named: "Passion Fruit Tea")!, mealName: "Passion Fruit Tea", mealPrice: "RM 10.00")
-            let meal2 = Meal(mealImage: UIImage(named: "Radiant Roselle Tea")!, mealName: "Radiant Roselle Tea", mealPrice: "RM 15.00")
-            let meal3 = Meal(mealImage: UIImage(named: "Signature Brown Sugar Pearl Milk Tea")!, mealName: "Signature Brown Sugar Pearl Milk Tea", mealPrice: "RM 12.00")
-            let meal4 = Meal(mealImage: UIImage(named: "Strawberry Pudding Smoothies")!, mealName: "Strawberry Pudding Smoothies", mealPrice: "RM 19.00")
-            let meal5 = Meal(mealImage: UIImage(named: "Superior Coco with Sea Salt Cheese")!, mealName: "Superior Coco with Sea Salt Cheese", mealPrice: "RM 12.00")
-            tempMeals.append(meal1)
-            tempMeals.append(meal2)
-            tempMeals.append(meal3)
-            tempMeals.append(meal4)
-            tempMeals.append(meal5)
+    func readJson() {
+        guard let path = Bundle.main.path(forResource: "data", ofType: "json") else { return }
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let json: NSArray = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
+            guard let array = json as? [Any] else { return }
+            for shop in array {
+                let shopDict = shop as? [String: Any]
+                let shopName = shopDict?["shopName"]
+//                print(shopName ?? "shopName not found")
+                var foodName: String = ""
+                var foodImg: String = ""
+                var foodType: [Any] = []
+                var drinkName: String = ""
+                var drinkPrice: Double
+                
+                if shopsName == shopName as! String {
+                    var tempMeals: [Meal] = []
+                    var tempOptDrink: [OptDrinks] = []
+                    for mealList in shopDict?["mainCourse"] as! [Dictionary<String, AnyObject>]{
+                        foodName = mealList["foodName"] as! String
+                        print(foodName)
+                        foodImg = mealList["foodImg"] as! String
+                        foodType = mealList["type"] as! [Any]
+                        print(foodType)
+                        let meal = Meal(mealImage: UIImage(named: foodImg)!, mealName: foodName, mainCourse: foodType)
+                        tempMeals.append(meal)
+                        meals = tempMeals
+                    }
+                    for drinkOptList in shopDict?["drinks"] as! [Dictionary<String, AnyObject>]{
+                        drinkName = drinkOptList["drinkName"] as! String
+                        print(drinkName)
+                        drinkPrice = drinkOptList["drinkPrice"] as! Double
+                        let drinkOptArray = OptDrinks(optDrinksName: drinkName, optDrinksPrice: drinkPrice)
+                        tempOptDrink.append(drinkOptArray)
+                        optDrinks = tempOptDrink
+                    }
+                }
+            }
+        } catch {
+            print(error.localizedDescription)
             
         }
-        return tempMeals
+        
     }
+    
 }
 
 extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return meals.count
     }
-    
+
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return 110
 //    }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //tableView.deselectRow(at: indexPath, animated: true)
       performSegue(withIdentifier: "MealView", sender: nil)
     }
-    
+
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let meal = meals[indexPath.row]
@@ -103,14 +108,15 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setMeals(meal: meal)
         return cell
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // send data to MealViewController
         if let destination = segue.destination as? MealViewController {
             destination.selectedMeal = meals[(mealList.indexPathForSelectedRow?.row)!]
+            destination.mealOptDrinks = optDrinks
         }
     }
-    
-    
-    
+
+
+
 }
