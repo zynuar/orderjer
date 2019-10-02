@@ -19,6 +19,7 @@ class SelectedMeals {
     init(selectedMealName: String, selectedOptions: String, selectedDrinks: String?, selectedMealPrice: Double, selectedMealQuantity: Int) {
         self.selectedMealName = selectedMealName
         self.selectedOptions = selectedOptions
+        self.selectedDrinks = selectedDrinks
         self.selectedMealPrice = selectedMealPrice
         self.selectedMealQuantity = selectedMealQuantity
     }

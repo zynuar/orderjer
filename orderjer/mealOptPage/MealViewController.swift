@@ -16,18 +16,24 @@ class MealViewController: UIViewController {
     @IBOutlet weak var selectedMealNameLabel: UILabel!
     @IBOutlet weak var placeOrderButton: UIButton!
     @IBOutlet weak var dismissButton: UIButton!
+    @IBOutlet weak var quantityLabel: UILabel!
     
     var selectedMeal: Meal?
     var mealOptMeals: [Any] = []
     var mealOptDrinks: [Any] = []
     var selectedRows = [String:IndexPath]()
+    var getMeals: [Any] = []
+    var getDrinks: [Any] = []
     let sections = ["Options","Drinks"]
     // initialize empty array
     var optMeals: [OptMeal] = []
     var optDrinks: [OptDrinks] = []
+    var completeMeal: [SelectedMeals] = []
+    var quantity: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        quantityLabel.text = "1"
         print("mainCourse -> \((selectedMeal?.mainCourse)!)")
         selectedMealNameLabel.text = "\((selectedMeal?.mealName)!)"
         singleMealImageView.image = selectedMeal?.mealImage
@@ -61,10 +67,36 @@ class MealViewController: UIViewController {
         return tempMeals
     }
     
+
     @IBAction func dismissTapped(_ sender: UIButton) {
           dismiss(animated: true, completion: nil)
     }
+
+    @IBAction func placeorderButton(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "toOrderSummary", sender: nil)
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toOrderSummary" {
+            if let destination = segue.destination as? OrderSummaryViewController {
+                destination.getSelectedMeals = getMeals
+                destination.getSelectedDrinks = getDrinks
+            }
+        }
+    }
+    
+    @IBAction func addButton(_ sender: UIButton) {
+        self.quantity += 1
+        self.quantityLabel.text = String(self.quantity)
+    }
+    
+    @IBAction func minusButton(_ sender: UIButton) {
+        self.quantity -= 1
+        if quantity < 1 {
+            quantity = 1
+        }
+        self.quantityLabel.text = String(self.quantity)
+    }
 }
 
 extension MealViewController: UITableViewDelegate, UITableViewDataSource {
@@ -88,34 +120,37 @@ extension MealViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let cell = tableView.cellForRow(at: indexPath) as! MealOptionsTableViewCell
+        let previusSelectedCellIndexPath = self.addSelectedCellWithSection(indexPath);
         
         // how to add selected meal and drinks into an array
         if indexPath.section == 0 {
-            print("\(String(describing: cell.mealItem?.optName))")
+            getMeals.append(optMeals[indexPath.row])
         } else {
-            print("\(String(describing: cell.drinksItem?.optDrinksName))")
+            getDrinks.append(optDrinks[indexPath.row])
         }
-       
-        let previusSelectedCellIndexPath = self.addSelectedCellWithSection(indexPath);
+        
+        print(getMeals)
+        print(getDrinks)
 
         if(previusSelectedCellIndexPath != nil)
         {
             let previusSelectedCell = tableView.cellForRow(at: previusSelectedCellIndexPath!) as! MealOptionsTableViewCell
+            let highlightedImg = UIImage(named: "highlighted")!
             
             let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
             imgView.image = UIImage(named: "unselect")!
-            let highlightedImg = UIImage(named: "highlighted")!
-            
             previusSelectedCell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
             previusSelectedCell.accessoryView = UIImageView(image: imgView.image, highlightedImage: highlightedImg)
             
             let imgView2 = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
             imgView2.image = UIImage(named: "selected")!
-            
             cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
             cell.accessoryView = UIImageView(image: imgView2.image, highlightedImage: highlightedImg)
+    
             tableView.deselectRow(at: previusSelectedCellIndexPath!, animated: true)
+            
         }
         else
         {

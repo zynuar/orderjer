@@ -16,21 +16,40 @@ class OrderSummaryViewController: UIViewController {
     @IBOutlet weak var serviceTaxLabel: UILabel!
     @IBOutlet weak var orderFeeLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
+    
     var mealsName = ""
     var getMeals: [SelectedMeals] = []
+    var getSelectedMeals: [Any] = []
+    var getSelectedDrinks: [Any] = []
+    var quantity: Int = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         proceedButton.layer.cornerRadius = 8
-        createArray()
-        print(getMeals)
+        getMeals = createArray()
+        debugPrint("getSelectedMeals -> \(getSelectedMeals.nameType)")
+        debugPrint("getSelectedDrinks -> \(getSelectedDrinks)")
     }
     
-    private func createArray() {
-        let meal1 = SelectedMeals(selectedMealName: "Double Cheese Burger", selectedOptions: "Regular Meal", selectedDrinks: "Coca Cola" , selectedMealPrice: 10.00, selectedMealQuantity: 2)
-        let meal2 = SelectedMeals(selectedMealName: "Ayam Goreng Mcd", selectedOptions: "Small Meal", selectedDrinks: "Ice Lemon Tea", selectedMealPrice: 12.00, selectedMealQuantity: 1)
-        let meal3 = SelectedMeals(selectedMealName: "Double Quarter Pounder", selectedOptions: "Ala Carte", selectedDrinks: "", selectedMealPrice: 8.00, selectedMealQuantity: 1)
-        getMeals += [meal1, meal2, meal3]
+    private func createArray() -> [SelectedMeals] {
+
+        var tempMeals: [SelectedMeals] = []
+//        var selectedOptions: String = ""
+//        var selectedDrinks: String = ""
+//        var foodPrice: Double
+//        var drinkPrice: Double
+//        for order in getSelectedMeals  as! [Dictionary<String, AnyObject>] {
+//            selectedOptions = order["nameType"] as! String
+//            selectedDrinks = order["drinkName"] as! String
+//            foodPrice = order["foodPrice"] as! Double
+//            drinkPrice = order["drinkPrice"] as! Double
+//            let newPrice = foodPrice + drinkPrice
+            let orderSummary = SelectedMeals(selectedMealName: "mealsName", selectedOptions: "selectedOptions", selectedDrinks: "selectedDrinks" , selectedMealPrice: 0.00, selectedMealQuantity: quantity)
+            tempMeals.append(orderSummary)
+//        }
+        return tempMeals
+       
     }
     
     @IBAction func dismissTapped(_ sender: UIButton) {
@@ -56,7 +75,7 @@ extension OrderSummaryViewController: UITableViewDelegate, UITableViewDataSource
         cell.selectedOptionLabel.text = meal.selectedOptions
         cell.selectedDrinkLabel.text = meal.selectedDrinks
         cell.selectedMealPrice.text = "RM \(meal.selectedMealPrice)"
-        cell.selectedMealQuantity.text = meal.selectedDrinks
+        cell.selectedMealQuantity.text = "\(meal.selectedMealQuantity)"
         return cell
     }
 }
