@@ -19,8 +19,8 @@ class OrderSummaryViewController: UIViewController {
     
     var mealsName = ""
     var getMeals: [SelectedMeals] = []
-    var getSelectedMeals: [Any] = []
-    var getSelectedDrinks: [Any] = []
+    var getSelectedMeals: OptMeal?
+    var getSelectedDrinks: OptDrinks?
     var quantity: Int = 0
     
     
@@ -28,23 +28,14 @@ class OrderSummaryViewController: UIViewController {
         super.viewDidLoad()
         proceedButton.layer.cornerRadius = 8
         getMeals = createArray()
-        debugPrint("getSelectedMeals -> \(getSelectedMeals.nameType)")
-        debugPrint("getSelectedDrinks -> \(getSelectedDrinks)")
+        print("getSelectedMeals -> \(String(describing: getSelectedMeals)))")
+        print("getSelectedDrinks -> \(String(describing: getSelectedDrinks))")
+    
     }
     
     private func createArray() -> [SelectedMeals] {
 
         var tempMeals: [SelectedMeals] = []
-//        var selectedOptions: String = ""
-//        var selectedDrinks: String = ""
-//        var foodPrice: Double
-//        var drinkPrice: Double
-//        for order in getSelectedMeals  as! [Dictionary<String, AnyObject>] {
-//            selectedOptions = order["nameType"] as! String
-//            selectedDrinks = order["drinkName"] as! String
-//            foodPrice = order["foodPrice"] as! Double
-//            drinkPrice = order["drinkPrice"] as! Double
-//            let newPrice = foodPrice + drinkPrice
             let orderSummary = SelectedMeals(selectedMealName: "mealsName", selectedOptions: "selectedOptions", selectedDrinks: "selectedDrinks" , selectedMealPrice: 0.00, selectedMealQuantity: quantity)
             tempMeals.append(orderSummary)
 //        }

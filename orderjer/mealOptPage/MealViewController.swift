@@ -79,8 +79,8 @@ class MealViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toOrderSummary" {
             if let destination = segue.destination as? OrderSummaryViewController {
-                destination.getSelectedMeals = getMeals
-                destination.getSelectedDrinks = getDrinks
+                destination.getSelectedMeals = getMeals[(mealOptionsTableView.indexPathForSelectedRow?.row)!] as? OptMeal
+                destination.getSelectedDrinks = getDrinks[(mealOptionsTableView.indexPathForSelectedRow?.row)!] as? OptDrinks
             }
         }
     }
@@ -123,17 +123,16 @@ extension MealViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.cellForRow(at: indexPath) as! MealOptionsTableViewCell
         let previusSelectedCellIndexPath = self.addSelectedCellWithSection(indexPath);
-        
         // how to add selected meal and drinks into an array
         if indexPath.section == 0 {
-            getMeals.append(optMeals[indexPath.row])
+            getMeals = [OptMeal(optName: optMeals[indexPath.row].optName, optPrice: optMeals[indexPath.row].optPrice)]
         } else {
-            getDrinks.append(optDrinks[indexPath.row])
+            getDrinks.append(OptDrinks(optDrinksName: optDrinks[indexPath.row].optDrinksName, optDrinksPrice: optDrinks[indexPath.row].optDrinksPrice))
         }
-        
+
         print(getMeals)
         print(getDrinks)
-
+        
         if(previusSelectedCellIndexPath != nil)
         {
             let previusSelectedCell = tableView.cellForRow(at: previusSelectedCellIndexPath!) as! MealOptionsTableViewCell
@@ -148,9 +147,9 @@ extension MealViewController: UITableViewDelegate, UITableViewDataSource {
             imgView2.image = UIImage(named: "selected")!
             cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
             cell.accessoryView = UIImageView(image: imgView2.image, highlightedImage: highlightedImg)
-    
-            tableView.deselectRow(at: previusSelectedCellIndexPath!, animated: true)
             
+           
+            tableView.deselectRow(at: previusSelectedCellIndexPath!, animated: true)
         }
         else
         {
@@ -170,6 +169,7 @@ extension MealViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
                 let highlightedImg = UIImage(named: "highlighted")!
                 cell.accessoryView = UIImageView(image: imgView2.image, highlightedImage: highlightedImg)
+                
                 tableView.deselectRow(at: indexPath, animated: true)
             }
         }

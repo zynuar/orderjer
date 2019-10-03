@@ -22,8 +22,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var pageControl: UIPageControl!
     var begin = false
     var x = 1
+    let width: CGFloat = 340
+    let height: CGFloat = 170
     let carouselImages = ["kfcImg","mcdImg","tealiveImg"]
-//    let mallImages = ["KFC","McDonald","Tealive"]
     var mallImages: [String] = []
     
     override func viewDidLoad() {
@@ -37,13 +38,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             self.stopAnimating(nil)
         }
         super.viewDidLoad()
-        self.pageControl.numberOfPages = carouselImages.count
-        self.carouselView.delegate = self
-        self.carouselView.dataSource = self
-        self.shopsView.delegate = self
-        self.shopsView.dataSource = self
-        seacrhBarCustomization()
         self.startTimer()
+        customCollectionView()
+        seacrhBarCustomization()
         readJson() 
     }
     
@@ -54,25 +51,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         do {
             let data = try Data(contentsOf: url)
             let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-//            print(json)
-            
             guard let array = json as? [Any] else { return }
-//            print(array)
             for shop in array {
-                
                 let shopDict = shop as? [String: Any]
-//                print(shopDict?["mainCourse"] ?? "Not found")
                 let shopName = shopDict?["shopName"]
-//                let food  = shopDict?["mainCourse"]
                 print(shopName ?? "shopName not found")
-//                print(food ?? "food not found")
                 mallImages.append(shopName as! String)
             }
         } catch {
             print(error.localizedDescription)
-            
         }
-        
     }
     
     func seacrhBarCustomization() {
@@ -82,6 +70,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         searchLocation.layer.shadowColor = UIColor.black.cgColor
         searchLocation.layer.borderColor = UIColor.black.withAlphaComponent(0.25).cgColor
         searchLocation.layer.shadowOpacity = 2
+    }
+    
+    func customCollectionView() {
+        self.pageControl.numberOfPages = carouselImages.count
+        self.carouselView.delegate = self
+        self.carouselView.dataSource = self
+        self.shopsView.delegate = self
+        self.shopsView.dataSource = self
+       
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool{
@@ -121,6 +118,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         } else {
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopsCollectionViewCell", for: indexPath) as! ShopsCollectionViewCell
             cell2.shopsViewImage.image = UIImage(named: mallImages[indexPath.row])
+            cell2.shopsViewImage.layer.cornerRadius = 16.0
+            cell2.shopsViewImage.layer.shadowPath = UIBezierPath(rect: cell2.shopsViewImage.bounds).cgPath
+            cell2.shopsViewImage.layer.shadowRadius = 8.0
+            cell2.shopsViewImage.layer.shadowOffset = .zero
+            cell2.shopsViewImage.layer.shadowOpacity = 1
             return cell2
         }
     }
