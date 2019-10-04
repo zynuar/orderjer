@@ -22,8 +22,8 @@ class MealViewController: UIViewController {
     var mealOptMeals: [Any] = []
     var mealOptDrinks: [Any] = []
     var selectedRows = [String:IndexPath]()
-    var getMeals: [Any] = []
-    var getDrinks: [Any] = []
+    var getMeals: [OptMeal] = []
+    var getDrinks: [String: Any] = [:]
     let sections = ["Options","Drinks"]
     // initialize empty array
     var optMeals: [OptMeal] = []
@@ -79,8 +79,9 @@ class MealViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toOrderSummary" {
             if let destination = segue.destination as? OrderSummaryViewController {
-                destination.getSelectedMeals = getMeals[(mealOptionsTableView.indexPathForSelectedRow?.row)!] as? OptMeal
-                destination.getSelectedDrinks = getDrinks[(mealOptionsTableView.indexPathForSelectedRow?.row)!] as? OptDrinks
+//                destination.getSelectedMeals = getMeals
+//                destination.getSelectedDrinks = getDrinks
+//                destination.quantity = quantity
             }
         }
     }
@@ -127,7 +128,7 @@ extension MealViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             getMeals = [OptMeal(optName: optMeals[indexPath.row].optName, optPrice: optMeals[indexPath.row].optPrice)]
         } else {
-            getDrinks.append(OptDrinks(optDrinksName: optDrinks[indexPath.row].optDrinksName, optDrinksPrice: optDrinks[indexPath.row].optDrinksPrice))
+            getDrinks = ["optDrinksName": optDrinks[indexPath.row].optDrinksName, "optDrinksPrice": optDrinks[indexPath.row].optDrinksPrice]
         }
 
         print(getMeals)

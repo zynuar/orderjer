@@ -18,9 +18,10 @@ class OrderSummaryViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     
     var mealsName = ""
+    var totalPrice: Double = 0.0
     var getMeals: [SelectedMeals] = []
     var getSelectedMeals: OptMeal?
-    var getSelectedDrinks: OptDrinks?
+    var getSelectedDrinks: [String: Any] = [:]
     var quantity: Int = 0
     
     
@@ -28,17 +29,15 @@ class OrderSummaryViewController: UIViewController {
         super.viewDidLoad()
         proceedButton.layer.cornerRadius = 8
         getMeals = createArray()
-        print("getSelectedMeals -> \(String(describing: getSelectedMeals)))")
-        print("getSelectedDrinks -> \(String(describing: getSelectedDrinks))")
-    
+        print("getSelectedMeals -> \(getSelectedMeals)")
+        print("getSelectedDrinks -> \(getSelectedDrinks)")
     }
     
     private func createArray() -> [SelectedMeals] {
 
         var tempMeals: [SelectedMeals] = []
-            let orderSummary = SelectedMeals(selectedMealName: "mealsName", selectedOptions: "selectedOptions", selectedDrinks: "selectedDrinks" , selectedMealPrice: 0.00, selectedMealQuantity: quantity)
-            tempMeals.append(orderSummary)
-//        }
+        let orderSummary = SelectedMeals(selectedMealName: "mealsName", selectedOptions: "selectedOptions", selectedDrinks: "selectedDrinks" , selectedMealPrice: 0.00, selectedMealQuantity: quantity)
+        tempMeals.append(orderSummary)
         return tempMeals
        
     }

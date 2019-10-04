@@ -58,6 +58,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 print(shopName ?? "shopName not found")
                 mallImages.append(shopName as! String)
             }
+            print(mallImages)
         } catch {
             print(error.localizedDescription)
         }

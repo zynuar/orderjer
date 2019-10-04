@@ -25,6 +25,7 @@
 		4EF0851B233CA7B300E8CE09 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0851A233CA7B300E8CE09 /* SearchViewController.swift */; };
 		4EF2CD502334C0E100CFCC56 /* LoginModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF2CD4F2334C0E100CFCC56 /* LoginModalView.swift */; };
 		4EF2CD522334C26000CFCC56 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF2CD512334C26000CFCC56 /* LoginViewController.swift */; };
+		4EF3FCEA2346FCC600E45354 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF3FCE92346FCC600E45354 /* SearchTableViewCell.swift */; };
 		C208917D4A4A17698A8818EF /* Pods_orderjerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E31499BA5216DF0CAE2CBBEE /* Pods_orderjerTests.framework */; };
 		DD6D59B8233F039000DA70C3 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6D59B7233F039000DA70C3 /* Shop.swift */; };
 		DD6D59BC233F04A500DA70C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD6D59BB233F04A500DA70C3 /* GoogleService-Info.plist */; };
@@ -79,6 +80,7 @@
 		4EF0851A233CA7B300E8CE09 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4EF2CD4F2334C0E100CFCC56 /* LoginModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModalView.swift; sourceTree = "<group>"; };
 		4EF2CD512334C26000CFCC56 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4EF3FCE92346FCC600E45354 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchTableViewCell.swift; path = /Users/izzaty/Documents/2509/orderjer/orderjer/searchPage/SearchTableViewCell.swift; sourceTree = "<absolute>"; };
 		51B0957FD096FA3D743C16F2 /* Pods-orderjer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-orderjer.debug.xcconfig"; path = "Target Support Files/Pods-orderjer/Pods-orderjer.debug.xcconfig"; sourceTree = "<group>"; };
 		6CE20A292C6B9514CFEE0F9E /* Pods-orderjerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-orderjerUITests.debug.xcconfig"; path = "Target Support Files/Pods-orderjerUITests/Pods-orderjerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		886F2DA7E942E1E3FFC4462C /* Pods-orderjerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-orderjerTests.debug.xcconfig"; path = "Target Support Files/Pods-orderjerTests/Pods-orderjerTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -196,6 +198,15 @@
 			path = dataModel;
 			sourceTree = "<group>";
 		};
+		4EF3FCE62346F64200E45354 /* searchPage */ = {
+			isa = PBXGroup;
+			children = (
+				4EF3FCE92346FCC600E45354 /* SearchTableViewCell.swift */,
+				4EF0851A233CA7B300E8CE09 /* SearchViewController.swift */,
+			);
+			path = searchPage;
+			sourceTree = "<group>";
+		};
 		BBB5F4F817A09F374B9446F1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,9 +261,9 @@
 				DDDACFE1232CCE1300AA5E10 /* Assets.xcassets */,
 				DDDACFDA232CCE1100AA5E10 /* AppDelegate.swift */,
 				DDDACFE3232CCE1300AA5E10 /* LaunchScreen.storyboard */,
-				4EF0851A233CA7B300E8CE09 /* SearchViewController.swift */,
 				DD9744312335DCB5004E491F /* RegisterViewController.swift */,
 				DD9744332335E128004E491F /* SuccessViewController.swift */,
+				4EF3FCE62346F64200E45354 /* searchPage */,
 				4E5000ED2341BCBD004D4AB0 /* Extension */,
 				4E5000EC2341BC95004D4AB0 /* homePage */,
 				DD6D59BF233F2A3A00DA70C3 /* mealOptPage */,
@@ -538,6 +549,7 @@
 				4EF2CD502334C0E100CFCC56 /* LoginModalView.swift in Sources */,
 				4ED717AB233362F400387731 /* MealViewController.swift in Sources */,
 				DD6D59B8233F039000DA70C3 /* Shop.swift in Sources */,
+				4EF3FCEA2346FCC600E45354 /* SearchTableViewCell.swift in Sources */,
 				DDDACFDB232CCE1100AA5E10 /* AppDelegate.swift in Sources */,
 				4E6A9477233489DA00017E3C /* MealOptionsTableViewCell.swift in Sources */,
 			);

@@ -9,18 +9,14 @@
 import UIKit
 
 class Shop {
-//    shopName: "mcd", shopLocation: "Damansara"
+
     var shopName: String
     var location: String
     var mallName: String
-    var mainCourse: [Meal]
-    var drinks: [OptDrinks]
     
-    init(shopName: String, location: String, mallName: String, mainCourse: [Meal], drinks: [OptDrinks]) {
+    init(shopName: String, location: String, mallName: String) {
         self.shopName = shopName
         self.location = location
         self.mallName = mallName
-        self.mainCourse = mainCourse
-        self.drinks = drinks
     }
 }
