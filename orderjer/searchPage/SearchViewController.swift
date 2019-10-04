@@ -8,9 +8,10 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SearchViewController: UIViewController {
 
-    @IBOutlet weak var searchBarTextField: UITextField!
+    
+    @IBOutlet weak var searchBarUI: UISearchBar!
     @IBOutlet weak var tableViewList: UITableView!
     
     var shopsArray: [Shop] = Array()
@@ -40,20 +41,41 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                 shopsArray.append(Shop(shopName: shopName as! String, location: location as! String, mallName: mallName as! String))
             }
             print("shopsArray-> \(shopsArray)")
+            searchArray = shopsArray
         } catch {
             print(error.localizedDescription)
         }
     }
+}
+
+
+extension SearchViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty else {
+            searchArray = shopsArray
+            tableViewList.reloadData()
+            return
+        }
+        searchArray = shopsArray.filter({ (shop) -> Bool in
+            return shop.shopName.contains(searchText)
+        })
+        
+        tableViewList.reloadData()
+    }
+}
+
+extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return shopsArray.count
+        return searchArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchListCell") as! SearchTableViewCell
-        cell.searchArrayImageView.image = UIImage(named: shopsArray[indexPath.row].shopName)
+        
+        cell.searchArrayImageView.image = UIImage(named: searchArray[indexPath.row].shopName)
         return cell
     }
-    
 }
