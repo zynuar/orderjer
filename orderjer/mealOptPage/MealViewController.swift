@@ -84,20 +84,23 @@ class MealViewController: UIViewController {
                 destination.getSelectedMeals = getMeals
                 destination.getSelectedDrinks = getDrinks
                 destination.quantity = quantity
-                var ref: DatabaseReference!
-                ref = Database.database().reference()
-                let mealsRef = ref.child("order")
-                //create data
-                var dict = [String: Any]()
-                dict.updateValue(selectedMeal!.mealName, forKey: "name")
-                dict.updateValue(quantity, forKey: "quantity")
-                dict.updateValue(getMeals[0].optName, forKey: "mealName")
-                dict.updateValue(getMeals[0].optPrice, forKey: "mealPrice")
-                dict.updateValue(getDrinks[0].optDrinksName, forKey: "drinkName")
-                dict.updateValue(getDrinks[0].optDrinksPrice, forKey: "drinkPrice")
-                //dict.updateValue("photo\(name)", forKey: "photo")
-                //dict.updateValue(rating, forKey: "rating")
-                mealsRef.child("customer1").setValue(dict)
+                let defaults = UserDefaults.standard
+                defaults.set(selectedMeal!.mealName, forKey: "name")
+                defaults.set(quantity, forKey: "quantity")
+                defaults.set(getMeals[0].optName, forKey: "mealName")
+                defaults.set(getMeals[0].optPrice, forKey: "mealPrice")
+                defaults.set(getDrinks[0].optDrinksName, forKey: "drinkName")
+                defaults.set(getDrinks[0].optDrinksPrice, forKey: "drinkPrice")
+                
+//                dict.updateValue(getMeals[0].optPrice, forKey: "mealPrice")
+                //                dict.updateValue(selectedMeal!.mealName, forKey: "name")
+                //                dict.updateValue(quantity, forKey: "quantity")
+                //                dict.updateValue(getMeals[0].optName, forKey: "mealName")
+                //                dict.updateValue(getMeals[0].optPrice, forKey: "mealPrice")
+                //                dict.updateValue(getDrinks[0].optDrinksName, forKey: "drinkName")
+                //                dict.updateValue(getDrinks[0].optDrinksPrice, forKey: "drinkPrice")
+                //                //dict.updateValue("photo\(name)", forKey: "photo")
+                //                //dict.updateValue(rating, forKey: "rating")
             }
         }
     }
@@ -228,3 +231,17 @@ extension MealViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+//                var ref: DatabaseReference!
+//                ref = Database.database().reference()
+//                let mealsRef = ref.child("order")
+//                //create data
+//                var dict = [String: Any]()
+//                dict.updateValue(selectedMeal!.mealName, forKey: "name")
+//                dict.updateValue(quantity, forKey: "quantity")
+//                dict.updateValue(getMeals[0].optName, forKey: "mealName")
+//                dict.updateValue(getMeals[0].optPrice, forKey: "mealPrice")
+//                dict.updateValue(getDrinks[0].optDrinksName, forKey: "drinkName")
+//                dict.updateValue(getDrinks[0].optDrinksPrice, forKey: "drinkPrice")
+//                //dict.updateValue("photo\(name)", forKey: "photo")
+//                //dict.updateValue(rating, forKey: "rating")
+//                mealsRef.child("customer1").setValue(dict)
