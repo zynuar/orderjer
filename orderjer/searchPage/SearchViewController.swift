@@ -75,7 +75,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchListCell") as! SearchTableViewCell
         
-        cell.searchArrayImageView.image = UIImage(named: searchArray[indexPath.row].shopName)
+        cell.searchImgView.image = UIImage(named: searchArray[indexPath.row].shopName)
         return cell
     }
 }

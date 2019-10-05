@@ -1,0 +1,275 @@
+[
+    {
+        "id" : 1,
+        "shopName" : "KFC" ,
+        "location" : "Damansara",
+        "mallName" : "Paradigm Mall",
+        "mainCourse" : [
+            {
+                "foodName" : "Snack Plate",
+                "foodImg" : "snack-plate",
+                "type" : [
+                    {
+                        "nameType" : "Regular Meal",
+                        "foodPrice" : 10.00
+                    },
+                    {
+                        "nameType" : "Ala Carte",
+                        "foodPrice" : 8.00
+                    }
+                ]
+            },
+            {
+                "foodName" : "Dinner Plate",
+                "foodImg" : "dinner-plate",
+                "type" : [
+                    {
+                        "nameType" : "Regular Meal",
+                        "foodPrice" : 10.00
+                    },
+                    {
+                        "nameType" : "Ala Carte",
+                        "foodPrice" : 8.00
+                    }
+                ]
+            },
+            {
+                "foodName" : "Wrap Cheezy",
+                "foodImg" : "wrap-cheezy",
+                "type" : [
+                    {
+                        "nameType" : "Regular Meal",
+                        "foodPrice" : 10.00
+                    },
+                    {
+                        "nameType" : "Ala Carte",
+                        "foodPrice" : 8.00
+                    }
+                ]
+            },
+            {
+                "foodName" : "Zinger Double Down",
+                "foodImg" : "zinger-burger",
+                "type" : [
+                    {
+                        "nameType" : "Regular Meal",
+                        "foodPrice" : 10.00
+                    },
+                    {
+                        "nameType" : "Ala Carte",
+                        "foodPrice" : 8.00
+                    }
+                ]
+            }
+        ],
+        "drinks" : [
+            {
+                "drinkName" : "Coca - Cola",
+                "drinkPrice" : 0.00
+            },
+            {
+                "drinkName" : "Pepsi",
+                "drinkPrice" : 0.00
+            },
+            {
+                "drinkName" : "Mountain Dew",
+                "drinkPrice" : 0.00
+            },
+            {
+                "drinkName" : "Ice Lemon Tea",
+                "drinkPrice" : 1.80
+            }
+        ]
+    },
+    {
+        "id" : 2,
+        "shopName" : "McDonald" ,
+        "location" : "Damansara",
+        "mallName" : "Paradigm Mall",
+        "mainCourse" : [
+            {
+                "foodName" : "Big Mac™",
+                "foodImg" : "big-mac",
+                "type" : [
+                    {
+                        "nameType" : "Regular Meal",
+                        "foodPrice" : 10.00
+                    },
+                    {
+                        "nameType" : "Large Meal",
+                        "foodPrice" : 10.00
+                    },
+                    {
+                        "nameType" : "Ala Carte",
+                        "foodPrice" : 8.00
+                    }
+                ]
+            },
+            {
+                "foodName" : "Quarter Pounder with Cheese",
+                "foodImg" : "double-quarter-pounder",
+                "type" : [
+                    {
+                        "nameType" : "Regular Meal",
+                        "foodPrice" : 10.00
+                    },
+                    {
+                        "nameType" : "Large Meal",
+                        "foodPrice" : 10.00
+                    },
+                    {
+                        "nameType" : "Ala Carte",
+                        "foodPrice" : 8.00
+                    }
+                ]
+            },
+            {
+                "foodName" : "Ayam Goreng McD™",
+                "foodImg" : "ayam-goreng-mcd",
+                "type" : [
+                    {
+                        "nameType" : "Regular Meal",
+                        "foodPrice" : 10.00
+                    },
+                    {
+                        "nameType" : "Large Meal",
+                        "foodPrice" : 10.00
+                    },
+                    {
+                        "nameType" : "Ala Carte",
+                        "foodPrice" : 8.00
+                    }
+                ]
+            },
+            {
+                "foodName" : "Double Cheeseburger",
+                "foodImg" : "double-cheese-burger",
+                "type" : [
+                    {
+                        "nameType" : "Regular Meal",
+                        "foodPrice" : 10.00
+                    },
+                    {
+                        "nameType" : "Large Meal",
+                        "foodPrice" : 10.00
+                    },
+                    {
+                        "nameType" : "Ala Carte",
+                        "foodPrice" : 8.00
+                    }
+                ]
+            }
+        ],
+        "drinks" : [
+            {
+               "drinkName" : "Coca - Cola",
+               "drinkPrice" : 0.00
+           },
+           {
+               "drinkName" : "Pepsi",
+               "drinkPrice" : 0.00
+           },
+           {
+               "drinkName" : "Mountain Dew",
+               "drinkPrice" : 0.00
+           },
+           {
+               "drinkName" : "Ice Lemon Tea",
+               "drinkPrice" : 1.80
+           }
+        ]
+    },
+    {
+        "id" : 3,
+        "shopName" : "Tealive" ,
+        "location" : "Damansara",
+        "mallName" : "Paradigm Mall",
+        "mainCourse" : [
+            {
+                "foodName" : "Signature Brown Sugar Pearl Milk Tea",
+                "foodImg" : "Signature Brown Sugar Pearl Milk Tea",
+                "type" : [
+                    {
+                        "nameType" : "Small",
+                        "foodPrice" : 6.90
+                    },
+                    {
+                        "nameType" : "Large",
+                        "foodPrice" : 7.50
+                    },
+                    {
+                        "nameType" : "Ala Carte",
+                        "foodPrice" : 8.00
+                    }
+                ]
+            },
+            {
+                "foodName" : "Strawberry Pudding Smoothies",
+                "foodImg" : "Strawberry Pudding Smoothies",
+                "type" : [
+                    {
+                        "nameType" : "Small",
+                        "foodPrice" : 6.90
+                    },
+                    {
+                        "nameType" : "Large",
+                        "foodPrice" : 7.50
+                    },
+                    {
+                        "nameType" : "Ala Carte",
+                        "foodPrice" : 8.00
+                    }
+                ]
+            },
+            {
+                "foodName" : "Superior Coco with Sea Salt Cheese",
+                "foodImg" : "Superior Coco with Sea Salt Cheese",
+                "type" : [
+                    {
+                        "nameType" : "Small",
+                        "foodPrice" : 6.90
+                    },
+                    {
+                        "nameType" : "Large",
+                        "foodPrice" : 7.50
+                    },
+                    {
+                        "nameType" : "Ala Carte",
+                        "foodPrice" : 8.00
+                    }
+                ]
+            },
+            {
+                "foodName" : "Radiant Roselle Tea",
+                "foodImg" : "Radiant Roselle Tea",
+                "type" : [
+                    {
+                        "nameType" : "Small",
+                        "foodPrice" : 6.90
+                    },
+                    {
+                        "nameType" : "Large",
+                        "foodPrice" : 7.50
+                    },
+                    {
+                        "nameType" : "Ala Carte",
+                        "foodPrice" : 8.00
+                    }
+                ]
+            }
+        ],
+        "drinks" : []
+    },
+    {
+        "id" : 4,
+        "shopName" : "The Alley" ,
+        "location" : "Damansara",
+        "mallName" : "Paradigm Mall"
+    },
+    {
+        "id" : 5,
+        "shopName" : "Tiger Sugar" ,
+        "location" : "Damansara",
+        "mallName" : "Paradigm Mall"
+    }
+]

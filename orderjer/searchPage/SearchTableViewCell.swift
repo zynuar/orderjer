@@ -2,13 +2,14 @@
 //  SearchTableViewCell.swift
 //  
 //
-//  Created by Izzaty on 04/10/2019.
+//  Created by PPAS RATU SIX on 05/10/2019.
 //
 
 import UIKit
 
 class SearchTableViewCell: UITableViewCell {
 
-  
-    @IBOutlet weak var searchArrayImageView: UIImageView!
+   
+    @IBOutlet weak var searchImgView: UIImageView!
+    
 }

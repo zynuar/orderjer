@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class MealViewController: UIViewController {
    
@@ -23,7 +24,7 @@ class MealViewController: UIViewController {
     var mealOptDrinks: [Any] = []
     var selectedRows = [String:IndexPath]()
     var getMeals: [OptMeal] = []
-    var getDrinks: [String: Any] = [:]
+    var getDrinks: [OptDrinks] = []
     let sections = ["Options","Drinks"]
     // initialize empty array
     var optMeals: [OptMeal] = []
@@ -79,9 +80,24 @@ class MealViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toOrderSummary" {
             if let destination = segue.destination as? OrderSummaryViewController {
-//                destination.getSelectedMeals = getMeals
-//                destination.getSelectedDrinks = getDrinks
-//                destination.quantity = quantity
+                destination.mealsName = selectedMeal!.mealName
+                destination.getSelectedMeals = getMeals
+                destination.getSelectedDrinks = getDrinks
+                destination.quantity = quantity
+                var ref: DatabaseReference!
+                ref = Database.database().reference()
+                let mealsRef = ref.child("order")
+                //create data
+                var dict = [String: Any]()
+                dict.updateValue(selectedMeal!.mealName, forKey: "name")
+                dict.updateValue(quantity, forKey: "quantity")
+                dict.updateValue(getMeals[0].optName, forKey: "mealName")
+                dict.updateValue(getMeals[0].optPrice, forKey: "mealPrice")
+                dict.updateValue(getDrinks[0].optDrinksName, forKey: "drinkName")
+                dict.updateValue(getDrinks[0].optDrinksPrice, forKey: "drinkPrice")
+                //dict.updateValue("photo\(name)", forKey: "photo")
+                //dict.updateValue(rating, forKey: "rating")
+                mealsRef.child("customer1").setValue(dict)
             }
         }
     }
@@ -128,7 +144,7 @@ extension MealViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             getMeals = [OptMeal(optName: optMeals[indexPath.row].optName, optPrice: optMeals[indexPath.row].optPrice)]
         } else {
-            getDrinks = ["optDrinksName": optDrinks[indexPath.row].optDrinksName, "optDrinksPrice": optDrinks[indexPath.row].optDrinksPrice]
+            getDrinks = [OptDrinks(optDrinksName: optDrinks[indexPath.row].optDrinksName, optDrinksPrice: optDrinks[indexPath.row].optDrinksPrice)]
         }
 
         print(getMeals)
