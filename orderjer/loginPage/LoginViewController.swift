@@ -43,19 +43,12 @@ class LoginViewController: UIViewController, NVActivityIndicatorViewable {
                 [weak self] user, error in
                 if error == nil && user != nil {
                     print("User Login!")
-                    self?.dismiss(animated: true){
-                               let size = CGSize(width: 30, height: 30)
-                        self?.startAnimating(size, message: "Loading...", type: .pacman, fadeInAnimation: nil)
-                               DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
-                                self?.stopAnimating(nil)
-
-                                self?.performSegue(withIdentifier: "loginToSuccessModal", sender: self)
-                                   //            let modalVC = SuccessViewController()
-                                   //            modalVC.modalPresentationStyle = .overCurrentContext
-                                   //            presentingViewController(modalVC)
-                               }
-                           }
-//                    self?.performSegue(withIdentifier: "loginToSuccessModal", sender: self)
+                    let size = CGSize(width: 30, height: 30)
+                    self?.startAnimating(size, message: "Loading...", type: .pacman, fadeInAnimation: nil)
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+                        self?.stopAnimating(nil)
+                        self?.performSegue(withIdentifier: "loginToSuccessModal", sender: self)
+                    }
                 } else {
                     let alertController = UIAlertController(title: "Error!", message: "Error \(error!.localizedDescription)", preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))

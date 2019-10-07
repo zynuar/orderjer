@@ -31,11 +31,13 @@ class MealViewController: UIViewController {
     var optDrinks: [OptDrinks] = []
     var completeMeal: [SelectedMeals] = []
     var quantity: Int = 1
+    var shopName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         quantityLabel.text = "1"
         print("mainCourse -> \((selectedMeal?.mainCourse)!)")
+        print("shopName -> \((shopName))")
         selectedMealNameLabel.text = "\((selectedMeal?.mealName)!)"
         singleMealImageView.image = selectedMeal?.mealImage
 
@@ -81,26 +83,13 @@ class MealViewController: UIViewController {
         if segue.identifier == "toOrderSummary" {
             if let destination = segue.destination as? OrderSummaryViewController {
                 destination.mealsName = selectedMeal!.mealName
-                destination.getSelectedMeals = getMeals
-                destination.getSelectedDrinks = getDrinks
+                destination.getSelectedMealName = getMeals[0].optName
+                destination.getSelectedDrinkName = getDrinks[0].optDrinksName
                 destination.quantity = quantity
-                let defaults = UserDefaults.standard
-                defaults.set(selectedMeal!.mealName, forKey: "name")
-                defaults.set(quantity, forKey: "quantity")
-                defaults.set(getMeals[0].optName, forKey: "mealName")
-                defaults.set(getMeals[0].optPrice, forKey: "mealPrice")
-                defaults.set(getDrinks[0].optDrinksName, forKey: "drinkName")
-                defaults.set(getDrinks[0].optDrinksPrice, forKey: "drinkPrice")
+                destination.shopName = shopName
                 
-//                dict.updateValue(getMeals[0].optPrice, forKey: "mealPrice")
-                //                dict.updateValue(selectedMeal!.mealName, forKey: "name")
-                //                dict.updateValue(quantity, forKey: "quantity")
-                //                dict.updateValue(getMeals[0].optName, forKey: "mealName")
-                //                dict.updateValue(getMeals[0].optPrice, forKey: "mealPrice")
-                //                dict.updateValue(getDrinks[0].optDrinksName, forKey: "drinkName")
-                //                dict.updateValue(getDrinks[0].optDrinksPrice, forKey: "drinkPrice")
-                //                //dict.updateValue("photo\(name)", forKey: "photo")
-                //                //dict.updateValue(rating, forKey: "rating")
+                let totalPrice = (getMeals[0].optPrice + getDrinks[0].optDrinksPrice) * Double(quantity)
+                destination.totalPrice = totalPrice
             }
         }
     }

@@ -13,18 +13,17 @@ class StatusViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let defaults = UserDefaults.standard
-       
-        
-        let mealPrice = defaults.double(forKey: "mealPrice")
-        print(mealPrice)
-        let drinkPrice = defaults.double(forKey: "drinkPrice")
-        print(drinkPrice)
+
+        let totalPrice = defaults.double(forKey: "totalPrice")
+        print(totalPrice)
         let mealName = defaults.string(forKey: "mealName")
-        print(mealName)
+        print(mealName!)
         let drinkName = defaults.string(forKey: "drinkName")
-        
+        print(drinkName!)
         let quantity = defaults.integer(forKey: "quantity")
+        print(quantity)
         let name = defaults.string(forKey: "name")
+        print(name!)
 
     }
     

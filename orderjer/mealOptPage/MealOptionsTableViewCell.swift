@@ -19,12 +19,12 @@ class MealOptionsTableViewCell: UITableViewCell {
     func setOptMeals(meal: OptMeal){
         mealItem = meal
         titleLabel.text = meal.optName
-        detailLabel.text = "\(meal.optPrice)"
+        detailLabel.text = "\(String(format: "RM %.2f", meal.optPrice))"
     }
     
     func setOptDrinks(drink: OptDrinks){
         drinksItem = drink
         titleLabel.text = drink.optDrinksName
-        detailLabel.text = "\(drink.optDrinksPrice)"
+        detailLabel.text = "\(String(format: "+RM %.2f", drink.optDrinksPrice))"
     }
 }

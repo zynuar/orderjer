@@ -17,6 +17,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             searchLocation.setIcon(UIImage(named: "searchBig")!)
         }
     }
+    @IBOutlet weak var barButton: UIBarButtonItem!
     @IBOutlet weak var carouselView: UICollectionView!
     @IBOutlet weak var shopsView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!

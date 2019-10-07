@@ -8,8 +8,9 @@
 
 import UIKit
 import Firebase
+import NVActivityIndicatorView
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, NVActivityIndicatorViewable {
 
     var handle: AuthStateDidChangeListenerHandle?
     
@@ -64,7 +65,12 @@ class RegisterViewController: UIViewController {
                 authResult, error in
                 if error == nil && authResult != nil {
                     print("User created!")
-                    self.performSegue(withIdentifier: "successModal", sender: self)
+                    let size = CGSize(width: 30, height: 30)
+                    self.startAnimating(size, message: "Loading...", type: .pacman, fadeInAnimation: nil)
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+                        self.stopAnimating(nil)
+                        self.performSegue(withIdentifier: "registerToSuccessModal", sender: self)
+                    }
                 } else {
                     let alertController = UIAlertController(title: "Error!", message: "Error \(error!.localizedDescription)", preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))

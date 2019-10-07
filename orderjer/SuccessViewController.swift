@@ -7,16 +7,16 @@
 //
 
 import UIKit
-import  NVActivityIndicatorView
+import NVActivityIndicatorView
+
 class SuccessViewController: UIViewController, NVActivityIndicatorViewable{
 
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
     @IBAction func okTapped(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+       self.navigationController?.popToRootViewController(animated: true)
     }
 }

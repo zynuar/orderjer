@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/ppasratusix/Documents/Izzaty/21092019/orderjer/orderjer/searchPage/SearchTableViewCell.swift">
-   </FileRef>
-   <FileRef
       location = "group:orderjer.xcodeproj">
    </FileRef>
    <FileRef

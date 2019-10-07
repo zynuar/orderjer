@@ -23,7 +23,7 @@ class OrderSummaryTableViewCell: UITableViewCell {
         selectedMealNameLabel.text = meal.selectedMealName
         selectedOptionLabel.text = meal.selectedOptions
         selectedDrinkLabel.text = meal.selectedDrinks
-        selectedMealPrice.text = "\(meal.selectedMealPrice)"
+        selectedMealPrice.text = "\(String(format:"RM %.2f", meal.selectedMealPrice))"
         selectedMealQuantity.text = "\(meal.selectedMealQuantity)"
     }
 

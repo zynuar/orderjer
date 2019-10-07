@@ -22,10 +22,11 @@
 		4EE6D4C2233B3B3C0083E357 /* SelectedMeals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE6D4C1233B3B3C0083E357 /* SelectedMeals.swift */; };
 		4EEF50E32330EAA00036B6EF /* ShopsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEF50E22330EAA00036B6EF /* ShopsCollectionViewCell.swift */; };
 		4EF0851B233CA7B300E8CE09 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0851A233CA7B300E8CE09 /* SearchViewController.swift */; };
+		4EF086D2234ADD5D00784030 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF086D1234ADD5D00784030 /* SearchTableViewCell.swift */; };
+		4EF086D7234B372E00784030 /* BadgeBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF086D6234B372E00784030 /* BadgeBarButtonItem.swift */; };
 		4EF2CD502334C0E100CFCC56 /* LoginModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF2CD4F2334C0E100CFCC56 /* LoginModalView.swift */; };
 		4EF2CD522334C26000CFCC56 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF2CD512334C26000CFCC56 /* LoginViewController.swift */; };
 		C208917D4A4A17698A8818EF /* Pods_orderjerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E31499BA5216DF0CAE2CBBEE /* Pods_orderjerTests.framework */; };
-		DD1E260D23483CFC0007142C /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E260C23483CFC0007142C /* SearchTableViewCell.swift */; };
 		DD1E260F23483E1E0007142C /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = DD1E260E23483E1E0007142C /* data.json */; };
 		DD1E26112348787B0007142C /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E26102348787B0007142C /* StatusViewController.swift */; };
 		DD1E261323487D1E0007142C /* StatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E261223487D1E0007142C /* StatusTableViewCell.swift */; };
@@ -79,6 +80,8 @@
 		4EE6D4C1233B3B3C0083E357 /* SelectedMeals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedMeals.swift; sourceTree = "<group>"; };
 		4EEF50E22330EAA00036B6EF /* ShopsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopsCollectionViewCell.swift; sourceTree = "<group>"; };
 		4EF0851A233CA7B300E8CE09 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		4EF086D1234ADD5D00784030 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchTableViewCell.swift; path = ../SearchTableViewCell.swift; sourceTree = "<group>"; };
+		4EF086D6234B372E00784030 /* BadgeBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeBarButtonItem.swift; sourceTree = "<group>"; };
 		4EF2CD4F2334C0E100CFCC56 /* LoginModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModalView.swift; sourceTree = "<group>"; };
 		4EF2CD512334C26000CFCC56 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		51B0957FD096FA3D743C16F2 /* Pods-orderjer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-orderjer.debug.xcconfig"; path = "Target Support Files/Pods-orderjer/Pods-orderjer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -88,10 +91,9 @@
 		ABB9349BB4AAB4AA57330A05 /* Pods-orderjerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-orderjerUITests.release.xcconfig"; path = "Target Support Files/Pods-orderjerUITests/Pods-orderjerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C039A02C23375250005680C3 /* NVActivityIndicatorView */ = {isa = PBXFileReference; lastKnownFileType = folder; name = NVActivityIndicatorView; path = Pods/NVActivityIndicatorView; sourceTree = "<group>"; };
 		DC52DFDBCA3E21EA769E12E6 /* Pods_orderjer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_orderjer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD1E260C23483CFC0007142C /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchTableViewCell.swift; path = /Users/ppasratusix/Documents/Izzaty/21092019/orderjer/orderjer/searchPage/SearchTableViewCell.swift; sourceTree = "<absolute>"; };
 		DD1E260E23483E1E0007142C /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		DD1E26102348787B0007142C /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
-		DD1E261223487D1E0007142C /* StatusTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTableViewCell.swift; sourceTree = "<group>"; };
+		DD1E261223487D1E0007142C /* StatusTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StatusTableViewCell.swift; path = ../StatusTableViewCell.swift; sourceTree = "<group>"; };
 		DD6D59B7233F039000DA70C3 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		DD6D59B9233F048000DA70C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DD6D59BB233F04A500DA70C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -202,10 +204,19 @@
 			path = dataModel;
 			sourceTree = "<group>";
 		};
+		4EF086D3234AF00000784030 /* statusPage */ = {
+			isa = PBXGroup;
+			children = (
+				DD1E26102348787B0007142C /* StatusViewController.swift */,
+				DD1E261223487D1E0007142C /* StatusTableViewCell.swift */,
+			);
+			path = statusPage;
+			sourceTree = "<group>";
+		};
 		4EF3FCE62346F64200E45354 /* searchPage */ = {
 			isa = PBXGroup;
 			children = (
-				DD1E260C23483CFC0007142C /* SearchTableViewCell.swift */,
+				4EF086D1234ADD5D00784030 /* SearchTableViewCell.swift */,
 				4EF0851A233CA7B300E8CE09 /* SearchViewController.swift */,
 			);
 			path = searchPage;
@@ -258,10 +269,10 @@
 		DDDACFD9232CCE1100AA5E10 /* orderjer */ = {
 			isa = PBXGroup;
 			children = (
+				4EF086D6234B372E00784030 /* BadgeBarButtonItem.swift */,
 				DD1E260E23483E1E0007142C /* data.json */,
 				DD6D59BB233F04A500DA70C3 /* GoogleService-Info.plist */,
 				DDDACFDE232CCE1100AA5E10 /* Main.storyboard */,
-				DD1E261223487D1E0007142C /* StatusTableViewCell.swift */,
 				DDDACFE6232CCE1300AA5E10 /* Info.plist */,
 				DDDACFE1232CCE1300AA5E10 /* Assets.xcassets */,
 				DDDACFDA232CCE1100AA5E10 /* AppDelegate.swift */,
@@ -269,6 +280,7 @@
 				DD9744312335DCB5004E491F /* RegisterViewController.swift */,
 				DD9744332335E128004E491F /* SuccessViewController.swift */,
 				4EF3FCE62346F64200E45354 /* searchPage */,
+				4EF086D3234AF00000784030 /* statusPage */,
 				4E5000ED2341BCBD004D4AB0 /* Extension */,
 				4E5000EC2341BC95004D4AB0 /* homePage */,
 				DD6D59BF233F2A3A00DA70C3 /* mealOptPage */,
@@ -276,7 +288,6 @@
 				4EE5F18A233B222400101FD8 /* dataModel */,
 				4EE5F184233B20AF00101FD8 /* menuListingPage */,
 				4EE5F187233B21A100101FD8 /* orderSummaryPage */,
-				DD1E26102348787B0007142C /* StatusViewController.swift */,
 			);
 			path = orderjer;
 			sourceTree = "<group>";
@@ -547,6 +558,7 @@
 				DD1E26112348787B0007142C /* StatusViewController.swift in Sources */,
 				4EEF50E32330EAA00036B6EF /* ShopsCollectionViewCell.swift in Sources */,
 				4EE18CBD2331CF6300B8F211 /* MenuViewController.swift in Sources */,
+				4EF086D7234B372E00784030 /* BadgeBarButtonItem.swift in Sources */,
 				4EB7219C233317990002AB65 /* MealTableViewCell.swift in Sources */,
 				4EF0851B233CA7B300E8CE09 /* SearchViewController.swift in Sources */,
 				DD9744342335E128004E491F /* SuccessViewController.swift in Sources */,
@@ -555,9 +567,9 @@
 				4E0EB37823307C6100FCEF10 /* System.swift in Sources */,
 				DD9744322335DCB5004E491F /* RegisterViewController.swift in Sources */,
 				4EF2CD502334C0E100CFCC56 /* LoginModalView.swift in Sources */,
+				4EF086D2234ADD5D00784030 /* SearchTableViewCell.swift in Sources */,
 				4ED717AB233362F400387731 /* MealViewController.swift in Sources */,
 				DD6D59B8233F039000DA70C3 /* Shop.swift in Sources */,
-				DD1E260D23483CFC0007142C /* SearchTableViewCell.swift in Sources */,
 				DDDACFDB232CCE1100AA5E10 /* AppDelegate.swift in Sources */,
 				4E6A9477233489DA00017E3C /* MealOptionsTableViewCell.swift in Sources */,
 			);
