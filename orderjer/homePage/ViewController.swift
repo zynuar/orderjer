@@ -87,6 +87,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return false
     }
     
+    @IBAction func toCart(_ sender: UIBarButtonItem) {
+        
+    }
     func startTimer() {
         let _ = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.scrollAutomatically), userInfo: nil, repeats: true)
     }

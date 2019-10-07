@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class OrderSummaryViewController: UIViewController {
     
@@ -18,12 +19,16 @@ class OrderSummaryViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     
     var mealsName = ""
-    var totalPrice: Double = 0.0
+    var totalPrice: Double = 0.00
     var getMeals: [SelectedMeals] = []
-    var getSelectedMeals: OptMeal?
-    var getSelectedDrinks: [String: Any] = [:]
-    var quantity: Int = 0
-    
+    var getSelectedMeals: [OptMeal] = []
+    var getSelectedDrinks: [OptDrinks] = []
+    var quantity: Int = 1
+    var selectedOption: String = ""
+    var mealPrice: Double = 0.00
+    var selectedDrinks: String = ""
+    var drinkPrice: Double = 0.00
+    var selectedMealPrice: Double = 0.00
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +39,44 @@ class OrderSummaryViewController: UIViewController {
     }
     
     private func createArray() -> [SelectedMeals] {
-
+        //get from server
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        let mealsRef = ref.child("order").child("customer1")
+        mealsRef.observe(DataEventType.value, with: { (snapshot) in
+            //clear local data
+//            self.meals = []
+            let postDict = snapshot.value as? [String : AnyObject] ?? [:]
+            for (key, value) in postDict {
+                //print("\(key) -> \(value)")
+                print(value["name"])
+                //mealName = value["name"] as! String
+                //mealImage = value["photo"] as! String
+                //mealRating = value["rating"] as! Int
+//                guard let meal = Meal(id: key,name: mealName, photo: UIImage(named: "meal1"), rating: mealRating) else {
+//                    fatalError("Unable to create meal 1")
+//                }
+//                self.meals += [meal]
+//                print("Amount of data from local \(self.meals.count)")
+            }
+//            //reload local data when get data from server
+//            self.tableView.reloadData()
+        })
+        
         var tempMeals: [SelectedMeals] = []
-        let orderSummary = SelectedMeals(selectedMealName: "mealsName", selectedOptions: "selectedOptions", selectedDrinks: "selectedDrinks" , selectedMealPrice: 0.00, selectedMealQuantity: quantity)
-        tempMeals.append(orderSummary)
+        
+        for item in getSelectedMeals {
+            selectedOption = item.optName
+            mealPrice = item.optPrice
+        }
+        for item2 in getSelectedDrinks{
+            selectedDrinks = item2.optDrinksName
+            drinkPrice = item2.optDrinksPrice
+        }
+        selectedMealPrice = (mealPrice + drinkPrice) * Double(quantity)
+        self.subtotalLabel.text = String(selectedMealPrice)
+        let arrayOf  = SelectedMeals(selectedMealName: mealsName, selectedOptions: selectedOption, selectedDrinks: selectedDrinks, selectedMealPrice: selectedMealPrice, selectedMealQuantity: quantity)
+        tempMeals.append(arrayOf)
         return tempMeals
        
     }
