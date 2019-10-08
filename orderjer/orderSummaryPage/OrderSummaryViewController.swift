@@ -79,7 +79,7 @@ extension OrderSummaryViewController: UITableViewDelegate, UITableViewDataSource
         cell.selectedMealNameLabel.text = meal.selectedMealName
         cell.selectedOptionLabel.text = meal.selectedOptions
         cell.selectedDrinkLabel.text = meal.selectedDrinks
-        cell.selectedMealPrice.text = "\(String(format: "RM %.2f", meal.selectedMealPrice))"
+        cell.selectedMealPrice.text = "\(String(format: "RM %.2f", totalPrice))"
         cell.selectedMealQuantity.text = "\(meal.selectedMealQuantity)"
         return cell
     }

@@ -24,14 +24,15 @@ class MealViewController: UIViewController {
     var mealOptDrinks: [Any] = []
     var selectedRows = [String:IndexPath]()
     var getMeals: [OptMeal] = []
-    var getDrinks: [OptDrinks] = []
+    var getDrinks: [OptDrinks]? = []
     let sections = ["Options","Drinks"]
     // initialize empty array
     var optMeals: [OptMeal] = []
-    var optDrinks: [OptDrinks] = []
+    var optDrinks: [OptDrinks]? = []
     var completeMeal: [SelectedMeals] = []
     var quantity: Int = 1
     var shopName = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,12 +85,19 @@ class MealViewController: UIViewController {
             if let destination = segue.destination as? OrderSummaryViewController {
                 destination.mealsName = selectedMeal!.mealName
                 destination.getSelectedMealName = getMeals[0].optName
-                destination.getSelectedDrinkName = getDrinks[0].optDrinksName
+                var totalPrice: Double = 0.00
+                if getDrinks?.count != 0 {
+                    destination.getSelectedDrinkName = (getDrinks?[0].optDrinksName)!
+                    totalPrice = (getMeals[0].optPrice + (getDrinks?[0].optDrinksPrice)!) * Double(quantity)
+                } else {
+                     destination.getSelectedDrinkName = ""
+                     totalPrice = (getMeals[0].optPrice) * Double(quantity)
+                }
+                
                 destination.quantity = quantity
                 destination.shopName = shopName
-                
-                let totalPrice = (getMeals[0].optPrice + getDrinks[0].optDrinksPrice) * Double(quantity)
                 destination.totalPrice = totalPrice
+                print("totalPrice -> \((totalPrice))")
             }
         }
     }
@@ -111,9 +119,15 @@ class MealViewController: UIViewController {
 extension MealViewController: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
+//        var countSection: Int
+//        if getMeals[0].optName == "Ala Carte"{
+//            countSection = 1
+//        }else {
+//            countSection = sections.count
+//        }
         return sections.count
     }
-
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section]
     }
@@ -123,7 +137,7 @@ extension MealViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             counts = optMeals.count
         } else {
-            counts = optDrinks.count
+            counts = optDrinks!.count
         }
         return counts
     }
@@ -135,12 +149,13 @@ extension MealViewController: UITableViewDelegate, UITableViewDataSource {
         // how to add selected meal and drinks into an array
         if indexPath.section == 0 {
             getMeals = [OptMeal(optName: optMeals[indexPath.row].optName, optPrice: optMeals[indexPath.row].optPrice)]
+          
         } else {
-            getDrinks = [OptDrinks(optDrinksName: optDrinks[indexPath.row].optDrinksName, optDrinksPrice: optDrinks[indexPath.row].optDrinksPrice)]
+            getDrinks = [OptDrinks(optDrinksName: optDrinks![indexPath.row].optDrinksName, optDrinksPrice: optDrinks![indexPath.row].optDrinksPrice)]
         }
 
         print(getMeals)
-        print(getDrinks)
+        print(getDrinks!)
         
         if(previusSelectedCellIndexPath != nil)
         {
@@ -157,7 +172,6 @@ extension MealViewController: UITableViewDelegate, UITableViewDataSource {
             cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
             cell.accessoryView = UIImageView(image: imgView2.image, highlightedImage: highlightedImg)
             
-           
             tableView.deselectRow(at: previusSelectedCellIndexPath!, animated: true)
         }
         else
@@ -197,7 +211,7 @@ extension MealViewController: UITableViewDelegate, UITableViewDataSource {
             let meal = optMeals[indexPath.row]
             cell.setOptMeals(meal: meal)
         } else {
-            let drink = optDrinks[indexPath.row]
+            let drink = optDrinks![indexPath.row]
             cell.setOptDrinks(drink: drink)
         }
         return cell
