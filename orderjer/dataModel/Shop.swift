@@ -13,10 +13,17 @@ class Shop {
     var shopName: String
     var location: String
     var mallName: String
+    var shopType: ShopType
     
-    init(shopName: String, location: String, mallName: String) {
+    init(shopName: String, location: String, mallName: String, shopType: ShopType) {
         self.shopName = shopName
         self.location = location
         self.mallName = mallName
+        self.shopType = shopType
     }
+}
+
+enum ShopType: String {
+    case food = "Food"
+    case beverage = "Beverage"
 }

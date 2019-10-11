@@ -26,10 +26,24 @@ class LoginViewController: UIViewController, NVActivityIndicatorViewable {
         }
     }
     
+    var getOrder: [SelectedMeals] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
+    @IBAction func loginToRegister(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "loginToRegister", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "loginToRegister" {
+            if let destination = segue.destination as? RegisterViewController {
+                destination.getOrder = getOrder
+            }
+        }
+    }
+    
     @IBAction func LoadingToSuccess(_ sender: Any) {
         guard let username = usernameTextField.text else { return }
         guard let password = passwordTextField.text else { return }
@@ -49,6 +63,7 @@ class LoginViewController: UIViewController, NVActivityIndicatorViewable {
                         self?.stopAnimating(nil)
                         self?.performSegue(withIdentifier: "loginToSuccessModal", sender: self)
                     }
+                    self?.saveData()
                 } else {
                     let alertController = UIAlertController(title: "Error!", message: "Error \(error!.localizedDescription)", preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
@@ -56,8 +71,21 @@ class LoginViewController: UIViewController, NVActivityIndicatorViewable {
                 }
             }
         }
-       
-       
+    }
+    
+    func saveData() {
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        let mealsRef = ref.child("order")
+        //create data
+        var dict = [String: Any]()
+        dict.updateValue(getOrder[0].selectedMealName, forKey: "name")
+        dict.updateValue(getOrder[0].selectedOptions, forKey: "mealName")
+        dict.updateValue(getOrder[0].selectedDrinks!, forKey: "drinkName")
+        dict.updateValue(getOrder[0].selectedMealPrice, forKey: "mealPrice")
+        dict.updateValue(getOrder[0].selectedMealQuantity, forKey: "quantity")
+        dict.updateValue("Waiting", forKey: "orderStatus")
+        mealsRef.child("customer1").setValue(dict)
     }
 
     @IBAction func cancelTapped(_ sender: UIButton) {

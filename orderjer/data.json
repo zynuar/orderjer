@@ -4,6 +4,7 @@
         "shopName" : "KFC" ,
         "location" : "Damansara",
         "mallName" : "Paradigm Mall",
+        "shopType" : "Food",
         "mainCourse" : [
             {
                 "foodName" : "Snack Plate",
@@ -86,6 +87,7 @@
         "shopName" : "McDonald" ,
         "location" : "Damansara",
         "mallName" : "Paradigm Mall",
+        "shopType" : "Food",
         "mainCourse" : [
             {
                 "foodName" : "Big Mac™",
@@ -184,6 +186,7 @@
         "shopName" : "Tealive" ,
         "location" : "Damansara",
         "mallName" : "Paradigm Mall",
+        "shopType" : "Beverage",
         "mainCourse" : [
             {
                 "foodName" : "Signature Brown Sugar Pearl Milk Tea",
@@ -264,12 +267,18 @@
         "id" : 4,
         "shopName" : "The Alley" ,
         "location" : "Damansara",
-        "mallName" : "Paradigm Mall"
+        "mallName" : "Paradigm Mall",
+        "shopType" : "Beverage",
+        "mainCourse" : [],
+        "drinks" : []
     },
     {
         "id" : 5,
         "shopName" : "Tiger Sugar" ,
         "location" : "Damansara",
-        "mallName" : "Paradigm Mall"
+        "mallName" : "Paradigm Mall",
+        "shopType" : "Beverage",
+        "mainCourse" : [],
+        "drinks" : []
     }
 ]

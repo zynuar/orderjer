@@ -13,6 +13,7 @@ import NVActivityIndicatorView
 class RegisterViewController: UIViewController, NVActivityIndicatorViewable {
 
     var handle: AuthStateDidChangeListenerHandle?
+    var getOrder: [SelectedMeals] = []
     
     @IBOutlet weak var usernameTextField: UITextField!{
         didSet{
@@ -43,6 +44,7 @@ class RegisterViewController: UIViewController, NVActivityIndicatorViewable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(getOrder[0].selectedOptions)
     }
 
 
@@ -77,8 +79,24 @@ class RegisterViewController: UIViewController, NVActivityIndicatorViewable {
                     self.present(alertController, animated: true, completion: nil)
                 }
             }
+            
+            saveData()
         }
-       
+    }
+    
+    func saveData() {
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        let mealsRef = ref.child("order")
+        //create data
+        var dict = [String: Any]()
+        dict.updateValue(getOrder[0].selectedMealName, forKey: "name")
+        dict.updateValue(getOrder[0].selectedOptions, forKey: "mealName")
+        dict.updateValue(getOrder[0].selectedDrinks!, forKey: "drinkName")
+        dict.updateValue(getOrder[0].selectedMealPrice, forKey: "mealPrice")
+        dict.updateValue(getOrder[0].selectedMealQuantity, forKey: "quantity")
+        dict.updateValue("Waiting", forKey: "orderStatus")
+        mealsRef.child("customer1").setValue(dict)
     }
     
     @IBAction func cancelTapped(_ sender: UIButton) {

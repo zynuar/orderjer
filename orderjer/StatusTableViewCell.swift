@@ -11,5 +11,12 @@ import UIKit
 class StatusTableViewCell: UITableViewCell {
 
    
-
+    @IBOutlet weak var statusImageView: UIImageView!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var mealNameLabel: UILabel!
+    @IBOutlet weak var mealOptLabel: UILabel!
+    @IBOutlet weak var mealPrice: UILabel!
+    @IBOutlet weak var drinkLabel: UILabel!
+    @IBOutlet weak var mealQuantity: UILabel!
+    
 }

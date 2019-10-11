@@ -120,11 +120,17 @@ extension MealViewController: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
 //        var countSection: Int
-//        if getMeals[0].optName == "Ala Carte"{
-//            countSection = 1
-//        }else {
+//        if getMeals.count != 0 {
+//            if getMeals[0].optName == "Ala Carte"{
+//                countSection = 1
+//            }else {
+//                countSection = sections.count
+//            }
+//        } else {
 //            countSection = sections.count
 //        }
+//
+//        return countSection
         return sections.count
     }
     
@@ -149,14 +155,13 @@ extension MealViewController: UITableViewDelegate, UITableViewDataSource {
         // how to add selected meal and drinks into an array
         if indexPath.section == 0 {
             getMeals = [OptMeal(optName: optMeals[indexPath.row].optName, optPrice: optMeals[indexPath.row].optPrice)]
-          
         } else {
             getDrinks = [OptDrinks(optDrinksName: optDrinks![indexPath.row].optDrinksName, optDrinksPrice: optDrinks![indexPath.row].optDrinksPrice)]
         }
 
         print(getMeals)
         print(getDrinks!)
-        
+
         if(previusSelectedCellIndexPath != nil)
         {
             let previusSelectedCell = tableView.cellForRow(at: previusSelectedCellIndexPath!) as! MealOptionsTableViewCell
@@ -234,17 +239,4 @@ extension MealViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-//                var ref: DatabaseReference!
-//                ref = Database.database().reference()
-//                let mealsRef = ref.child("order")
-//                //create data
-//                var dict = [String: Any]()
-//                dict.updateValue(selectedMeal!.mealName, forKey: "name")
-//                dict.updateValue(quantity, forKey: "quantity")
-//                dict.updateValue(getMeals[0].optName, forKey: "mealName")
-//                dict.updateValue(getMeals[0].optPrice, forKey: "mealPrice")
-//                dict.updateValue(getDrinks[0].optDrinksName, forKey: "drinkName")
-//                dict.updateValue(getDrinks[0].optDrinksPrice, forKey: "drinkPrice")
-//                //dict.updateValue("photo\(name)", forKey: "photo")
-//                //dict.updateValue(rating, forKey: "rating")
-//                mealsRef.child("customer1").setValue(dict)
+

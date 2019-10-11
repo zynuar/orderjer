@@ -15,7 +15,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var tableViewList: UITableView!
     
     var shopsArray: [Shop] = Array()
-    var searchArray: [Shop] = Array()
+    var searchArray: [Shop] = Array() // update table
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,9 @@ class SearchViewController: UIViewController {
                 print(location ?? "location not found")
                 let mallName = shopDict?["mallName"]
                 print(mallName ?? "mallName not found")
-                shopsArray.append(Shop(shopName: shopName as! String, location: location as! String, mallName: mallName as! String))
+                let shopType = shopDict?["shopType"]
+                print(shopType ?? "shopType not found")
+                shopsArray.append(Shop(shopName: shopName as! String, location: location as! String, mallName: mallName as! String, shopType: ShopType(rawValue: shopType as! String)!))
             }
             print("shopsArray-> \(shopsArray)")
             searchArray = shopsArray
@@ -52,16 +54,42 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard !searchText.isEmpty else {
-            searchArray = shopsArray
-            tableViewList.reloadData()
-            return
-        }
         searchArray = shopsArray.filter({ (shop) -> Bool in
-            return shop.shopName.contains(searchText)
+            print("lalu textDidChange ")
+            switch searchBarUI.selectedScopeButtonIndex {
+            case 0:
+                if searchText.isEmpty { return true }
+                return shop.shopName.lowercased().contains(searchText.lowercased())
+            case 1:
+                if searchText.isEmpty { return shop.shopType.rawValue == "Food" }
+                return shop.shopName.lowercased().contains(searchText.lowercased()) && shop.shopType.rawValue == "Food"
+            case 2:
+                if searchText.isEmpty { return shop.shopType.rawValue == "Beverage" }
+                return shop.shopName.lowercased().contains(searchText.lowercased()) && shop.shopType.rawValue == "Beverage"
+            default:
+                return false
+            }
         })
-        
         tableViewList.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        switch selectedScope {
+        case 0:
+           searchArray =  shopsArray
+        case 1:
+            searchArray =  shopsArray.filter({ (shop) -> Bool in
+                shop.shopType == ShopType.food
+            })
+        case 2:
+            searchArray =  shopsArray.filter({ (shop) -> Bool in
+                shop.shopType == ShopType.beverage
+            })
+
+        default:
+            break
+        }
+    tableViewList.reloadData()
     }
 }
 

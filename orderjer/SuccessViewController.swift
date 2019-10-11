@@ -7,16 +7,15 @@
 //
 
 import UIKit
-import NVActivityIndicatorView
 
-class SuccessViewController: UIViewController, NVActivityIndicatorViewable{
-
+class SuccessViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-    @IBAction func okTapped(_ sender: UIButton) {
-       self.navigationController?.popToRootViewController(animated: true)
+    
+    @IBAction func okButton(_ sender: UIButton) {
+        performSegue(withIdentifier: "unwindToHome", sender: nil)
     }
 }

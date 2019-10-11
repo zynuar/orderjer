@@ -45,6 +45,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         readJson() 
     }
     
+    @IBAction func unwindToHome(_ unwindSegue: UIStoryboardSegue) {
+    }
+    
     func readJson() {
         guard let path = Bundle.main.path(forResource: "data", ofType: "json") else { return }
         let url = URL(fileURLWithPath: path)
@@ -91,6 +94,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBAction func toCart(_ sender: UIBarButtonItem) {
         
     }
+    
     func startTimer() {
         let _ = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.scrollAutomatically), userInfo: nil, repeats: true)
     }
