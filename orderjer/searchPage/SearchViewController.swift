@@ -42,7 +42,6 @@ class SearchViewController: UIViewController {
                 print(shopType ?? "shopType not found")
                 shopsArray.append(Shop(shopName: shopName as! String, location: location as! String, mallName: mallName as! String, shopType: ShopType(rawValue: shopType as! String)!))
             }
-            print("shopsArray-> \(shopsArray)")
             searchArray = shopsArray
         } catch {
             print(error.localizedDescription)
@@ -105,5 +104,11 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.searchImgView.image = UIImage(named: searchArray[indexPath.row].shopName)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       let vc = storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController
+        vc?.shopsName = searchArray[indexPath.row].shopName
+       self.navigationController?.pushViewController(vc!, animated: true)
     }
 }

@@ -32,6 +32,10 @@ class MenuViewController: UIViewController {
             menuImage.image = UIImage(named: "cover menu mcd")
         } else if shopsName == "Tealive" {
             menuImage.image = UIImage(named: "cover menu tealive")
+        } else if shopsName == "The Alley" {
+            menuImage.image = UIImage(named: "cover menu the alley")
+        } else if shopsName == "Tiger Sugar" {
+            menuImage.image = UIImage(named: "cover menu tiger sugar")
         }
     }
     

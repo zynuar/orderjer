@@ -59,7 +59,7 @@ class LoginViewController: UIViewController, NVActivityIndicatorViewable {
                     print("User Login!")
                     let size = CGSize(width: 30, height: 30)
                     self?.startAnimating(size, message: "Loading...", type: .pacman, fadeInAnimation: nil)
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
                         self?.stopAnimating(nil)
                         self?.performSegue(withIdentifier: "loginToSuccessModal", sender: self)
                     }
